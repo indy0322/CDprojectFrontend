@@ -70,6 +70,13 @@ function Introduce() {
             setTourAddress(tourData.addr)
             setTourTitle(tourData.title)
             setTourId(tourData.contentid)
+            setTourX(tourData.mapx)
+            setTourY(tourData.mapy)
+
+            /*let wishData = localStorage.getItem('tourData' + '-' + tourData.contentid)
+            if(wishData){
+                setWishHeart(true)
+            }*/
         }
 
     },[])
@@ -86,10 +93,13 @@ function Introduce() {
     const [tourId, setTourId] = useState('')
     const [tourAddress, setTourAddress] = useState('')
     const [tourTitle, setTourTitle] = useState('')
+    const [tourX, setTourX] = useState('')
+    const [tourY, setTourY] = useState('')
     const [reviewContent, setReviewContent] = useState()
     const [reviewBtn, setReviewBtn] = useState('Review')
     const [chatgptLang, setChatgptLang] = useState('')
     const [reviews, setReviews] = useState([])
+    const [wishHeart, setWishHeart] = useState(false)
 
     const [nickName, setNickName] = useState('')
 
@@ -117,7 +127,7 @@ function Introduce() {
     }
 
     const onClickHeart = () => {
-        const heartBtn = document.getElementsByClassName("heartBtn")[0]
+        /*const heartBtn = document.getElementsByClassName("heartBtn")[0]
         const heartFull = document.getElementsByClassName("heartFull")[0]
         const heartEmpty = document.getElementsByClassName("heartEmpty")[0]
         if(heartFull){
@@ -129,8 +139,70 @@ function Introduce() {
             heartBtn.innerHTML = "❤️"
             heartBtn.classList.remove("heartEmpty")
             heartBtn.classList.add("heartFull")
+        }*/
+        if(!wishHeart){
+            const newwishData = {
+                nickName: nickName,
+                tourId: tourId,
+                tourAddress: tourAddress,
+                tourImage: tourimage,
+                tourX: tourX,
+                tourY: tourY,
+                tourTitle: tourTitle
+            }
+            Services.wishRegister(newwishData)
+        }else{
+            const removeWishData = {
+                nickName: nickName,
+                tourId: tourId
+            }
+            Services.wishRemove(removeWishData)
         }
+        setWishHeart(!wishHeart)
     }
+
+    /*useEffect(() => {
+        if(wishHeart){
+            const newwishData = {
+                nickName: nickName,
+                tourId: tourId,
+                tourAddress: tourAddress,
+                tourImage: tourimage,
+                tourX: tourX,
+                tourY: tourY,
+                tourTitle: tourTitle
+            }
+            Services.wishRegister(newwishData)
+        }
+        else{
+            const removeWishData = {
+                nickName: nickName,
+                tourId: tourId
+            }
+            Services.wishRemove(removeWishData)
+        }
+    },[wishHeart])*/
+
+    useEffect(() => {
+        if(nickName != ''){
+            const getWishData = async () => {
+                const searchData = {
+                    nickName: nickName
+                }
+                let aaa = await Services.wishInfo(searchData)
+                //console.log(aaa)
+                aaa.map((w) => {
+                    if(w.tourId == tourId){
+                        setWishHeart(true)
+                    }
+                })
+                
+                /*
+                */
+            }
+            getWishData()
+        }
+    },[tourId])
 
     const onClickContentLanguage = () => {
         const contentsLanguage = document.getElementsByClassName("contentsLanguage")[0]
@@ -351,7 +423,7 @@ function Introduce() {
                 <figure className="image" style={{height:"50vh"}}>
                     {tourimage == "" ? <img className="tourImage" style={{width:"50vw", height:"50vh",top:"8vh",position:"fixed"}} src="/images/nothing.png"/> : <img className="tourImage" style={{width:"50vw", height:"50vh",top:"8vh",position:"fixed"}} src="http://tong.visitkorea.or.kr/cms/resource/33/2678633_image2_1.jpg"/>}
                 </figure>
-                <span className="heartBtn heartFull" type="button" style={{top:"8vh",left:"1vw",position:"fixed",fontSize:"3vw"}} onClick={onClickHeart}>❤️</span>
+                <span className="heartBtn heartEmpty" type="button" style={{top:"8vh",left:"1vw",position:"fixed",fontSize:"3vw"}} onClick={onClickHeart}>{wishHeart ? "❤️" : "🤍"}</span>
                 <span className="mapBtn" onClick={() => {window.location.href = `/map?contetndid=${tourId}`}} type="button" style={{top:"8vh", left:"5vw",position:"fixed",fontSize:"3vw"}}>🗺️</span>
             </div>
 
@@ -402,7 +474,7 @@ function Introduce() {
             > 
             <div className="reviewContainer" style={{height:"40vh",width:"100vw",backgroundColor:"skyblue",bottom:"0",position:"fixed"}}>
                 <div style={{height:"25vh",overflowY:"scroll"}}>
-                    {/*<div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
                         (닉네임) 좋은 관광지~~~
                     </div>
                     <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
@@ -416,7 +488,7 @@ function Introduce() {
                     </div>
                     <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
                         (닉네임) 좋은 관광지~~~
-                    </div>*/}
+                    </div>
                     {reviews.map((review) => {
                         const time = new Date(parseInt(review.date))
 
@@ -450,7 +522,7 @@ function Introduce() {
                 </figure>
                 <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
                 <span className="mapBtn" onClick={() => {window.location.href = `/map?contetndid=${tourId}`}} type="button" style={{top:"32vh", right:"2vw",position:"fixed",fontSize:"10vw"}}>🗺️</span>
-                <span className="heartBtn heartFull" type="button" style={{top:"0",right:"2vw",position:"fixed",fontSize:"10vw"}} onClick={onClickHeart}>❤️</span>
+                <span className="heartBtn heartEmpty" type="button" style={{top:"0",right:"2vw",position:"fixed",fontSize:"10vw"}} onClick={onClickHeart}>{wishHeart ? "❤️" : "🤍"}</span>
             </div>
             
             <div className="contentsContainer" style={{backgroundColor:"white",top:"40vh", position:"fixed", width:"100vw", height:"50vh",alignItems:"center",display:"flex", flexDirection:"column",overflowY:"scroll"}}>
@@ -531,7 +603,7 @@ function Introduce() {
                 <div className="review" style={{backgroundColor:"skyblue",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", overflowY:"scroll"}}>
                     {/*<button className="button is-dark reviewRightBtn" onClick={onClickReviewBtn} style={{marginTop:"1vh",marginBottom:"2vw"}}>리뷰작성</button>*/}
                     <div style={{height:"70VW",overflowY:"scroll", marginBottom:"1vh"}}>
-                        {/*<div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                        <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
                             (닉네임) 좋은 관광지~~~
                         </div>
                         <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
@@ -545,11 +617,12 @@ function Introduce() {
                         </div>
                         <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
                             (닉네임) 좋은 관광지~~~
-                        </div>*/}
+                        </div>
                         {reviews.map((review) => {
                             const time = new Date(parseInt(review.date))
 
                             return (<div className="box" key={review.date} style={{margin:"1vw", fontWeight:"bold"}}>
+                                {(nickName == review.nickname) && <button className="delete deleteBtn" id={review.date} aria-label="close" style={{float:"right"}} onClick={onClickReviewRemove}></button>}
                                 ({review.nickname}) <text style={{color:"blue"}}>{time.toDateString()}</text> <br/>
                                 {review.review}
                             </div>)

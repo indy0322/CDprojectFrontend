@@ -72,39 +72,82 @@ class Services{
     }
 
     async reviewRegister(data) {
-        try{
-            return await axios.post(`/api/reviewregister`,data)
+        return await axios.post(`/api/reviewregister`,data)
+                .then(async(res) => {
+                    console.log(res)
+                    return await res.data
+                })
+        /*try{
+            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewregister`,data)
                 .then(async(res) => {
                     console.log(res.data)
+                    return await res.data
                 })
         }catch(err){
             
             console.log(err)
-        }
+            return await err
+        }*/
         
     }
 
     async reviewRemove(data) {
-        try{
-            return await axios.post(`/api/reviewremove`,data)
+        return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewremove`,data)
+                .then(async (res) => {
+                    console.log(res)
+                    return await res.data
+                })
+        /*try{
+            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewremove`,data)
                 .then(async (res) => {
                     console.log(res.data)
+                    return await res.data
                 })
         }catch(err){
             console.log(err)
-        }
+            return await err
+        }*/
     }
 
     async reviewInfo(data) {
-        try{
-            return await axios.post(`/api/reviewinfo`,data)
+        return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewinfo`,data)
+                .then(async(res) => {
+                    console.log(res)
+                    return await res.data
+                })
+        /*try{
+            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewinfo`,data)
                 .then(async(res) => {
                     console.log(res)
                     return await res.data
                 })
         }catch(err){
             console.log(err)
-        }
+            return await err
+        }*/
+    }
+
+    async wishRegister(data) {
+        return await axios.post('/api/wishregister',data)
+                .then(async(res) => {
+                    console.log(res)
+                    return await res.data
+                })
+    }
+
+    async wishRemove(data) {
+        return await axios.post('/api/wishremove',data)
+                .then(async(res) => {
+                    console.log(res)
+                })
+    }
+
+    async wishInfo(data) {
+        return await axios.post('/api/wishinfo',data)
+                .then(async(res) => {
+                    console.log(res)
+                    return await res.data
+                })
     }
 
     async authNumber(data){

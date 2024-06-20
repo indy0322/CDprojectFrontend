@@ -307,7 +307,7 @@ function Start() {
                                 <label className="label" style={{textAlign:"left"}}><Translate>Sign up email</Translate></label>
                                 <input class="email input is-info registerEmail" type="text" placeholder="Email" style={{marginBottom:"2vw"}}></input>
                                 <label className="label" style={{textAlign:"left"}}><Translate>Sign up password</Translate></label>
-                                <input className="password input is-info registerPassword" type="text" placeholder="Password" style={{marginBottom:"1vw"}}></input>
+                                <input className="password input is-info registerPassword" type="password" placeholder="Password" style={{marginBottom:"1vw"}}></input>
 
                                 {/*<div className="certLabel" style={{width:"100vw"}}>
                                     <label className="label" style={{textAlign:"left"}}>auth number</label>
@@ -426,7 +426,7 @@ function Start() {
                                 <label className="label" style={{textAlign:"left"}}><Translate>Sign up email</Translate></label>
                                 <input class="email input is-info registerEmail" type="text" style={{marginBottom:"2vw"}}></input>
                                 <label className="label" style={{textAlign:"left"}}><Translate>Sign up password</Translate></label>
-                                <input className="password input is-info registerPassword" type="text" style={{marginBottom:"2vw"}}></input>
+                                <input className="password input is-info registerPassword" type="password" style={{marginBottom:"2vw"}}></input>
 
                                 {/*<label className="label certLabel" style={{textAlign:"left", display:"none"}}><Translate>auth number</Translate></label>
                                 <div className="cert" style={{display:"none"}}>

@@ -362,13 +362,13 @@ function Map(){
                         {/*<img src='/images/mapkorea.png' style={{width:"40vw",height:"40vh"}}></img>*/}
                         {currentMapState ? <iframe
                             className='tourMap'
-                            width={600}
+                            width={800}
                             height={380}
                             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE}&q=${currentPoint}&language=${googleLang}`}>
                             
                         </iframe> : <iframe
                             className='tourMap'
-                            width={600}
+                            width={800}
                             height={380}
                             src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE}&origin=${startPoint}&destination=${endPoint}&language=${googleLang}&mode=transit`}>
                             

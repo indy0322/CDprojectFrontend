@@ -3,6 +3,7 @@ import './App.css';
 import Test from './components/test';
 //import Introduce from './components/introduce';
 import Introduce2 from './components/introduce2';
+import Wishlist from './components/wishlist'
 //import Review from './components/review';
 import Start from './components/start';
 import Search from './components/search';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/test" element={<Test/>}></Route>
           {/*<Route path="/tts" element={<Tts/>}></Route>*/}
           <Route path='/introduce/:tourId' element={<Introduce2/>}></Route>
+          <Route path='/wishlist' element={<Wishlist/>}></Route>
           {/*<Route path='/tour/:tourName' element={<Introduce/>}></Route>*/}
           {/*<Route path='/review/:tourId' element={<Review/>}></Route>*/}
         </Routes>
