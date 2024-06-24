@@ -256,14 +256,13 @@ function Introduce() {
                     </div>
                 </div>
             </nav>
-            <div className="container">
-                <div>Cell 1</div>
-                <div>Cell 2</div>
-                <div>Cell 3</div>
-                <div>Cell 4</div>
+            <div className="containerWish">
                 {wishlist.map((wish) => {
                     return(
-                        <div>{wish.tourId}</div>
+                        <div>
+                            {wish.tourId}<br/>
+                            {wish.tourTitle}
+                        </div>
                     )
                 })}
                 

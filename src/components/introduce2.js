@@ -336,6 +336,22 @@ function Introduce() {
         Services.reviewRemove({date:e.target.id})
     }
 
+    const ReviewItem = ({review}) => {
+        const [reviewTrans, setReviewTrans] = useState(true)
+        const time = new Date(parseInt(review.date))
+
+        return (<div className="box" key={review.date} style={{margin:"1vw", fontWeight:"bold"}}>
+            {(nickName == review.nickname) && <button className="delete deleteBtn" id={review.date} aria-label="close" style={{float:"right"}} onClick={onClickReviewRemove}></button>}
+            <button style={{float:"right", marginRight:"1vw"}} onClick={() => {
+                setReviewTrans(!reviewTrans)
+            }}>
+                {isMobile ? <img src="/images/trans.png" style={{width:"5vw"}}></img> : <img src="/images/trans.png" style={{width:"2vw"}}></img>}
+            </button>
+            ({review.nickname}) <text style={{color:"blue"}}>{time.toDateString()}</text> <br/>
+            {reviewTrans ? <text>{review.review}</text> : <text>번역됨</text>}
+        </div>)
+    }
+
     
 
     return(
@@ -490,13 +506,7 @@ function Introduce() {
                         (닉네임) 좋은 관광지~~~
                     </div>
                     {reviews.map((review) => {
-                        const time = new Date(parseInt(review.date))
-
-                        return (<div className="box" key={review.date} style={{margin:"1vw", fontWeight:"bold"}}>
-                            {(nickName == review.nickname) && <button className="delete deleteBtn" id={review.date} aria-label="close" style={{float:"right"}} onClick={onClickReviewRemove}></button>}
-                            ({review.nickname}) <text style={{color:"blue"}}>{time.toDateString()}</text> <br/>
-                            {review.review}
-                        </div>)
+                        return(<ReviewItem review={review}></ReviewItem>)
                     })}
                 </div>
                 <div style={{marginBottom:"1vh",width:"80vw",marginLeft:"auto",marginRight:"auto",marginBottom:"1vh"}}>
@@ -619,13 +629,7 @@ function Introduce() {
                             (닉네임) 좋은 관광지~~~
                         </div>
                         {reviews.map((review) => {
-                            const time = new Date(parseInt(review.date))
-
-                            return (<div className="box" key={review.date} style={{margin:"1vw", fontWeight:"bold"}}>
-                                {(nickName == review.nickname) && <button className="delete deleteBtn" id={review.date} aria-label="close" style={{float:"right"}} onClick={onClickReviewRemove}></button>}
-                                ({review.nickname}) <text style={{color:"blue"}}>{time.toDateString()}</text> <br/>
-                                {review.review}
-                            </div>)
+                            return(<ReviewItem review={review}></ReviewItem>)
                         })}
                     </div>
                     <div style={{marginBottom:"1vh"}}>

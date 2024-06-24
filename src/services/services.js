@@ -72,7 +72,7 @@ class Services{
     }
 
     async reviewRegister(data) {
-        return await axios.post(`/api/reviewregister`,data)
+        return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewregister`,data)
                 .then(async(res) => {
                     console.log(res)
                     return await res.data
@@ -128,7 +128,7 @@ class Services{
     }
 
     async wishRegister(data) {
-        return await axios.post('/api/wishregister',data)
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/wishregister',data)
                 .then(async(res) => {
                     console.log(res)
                     return await res.data
@@ -136,14 +136,14 @@ class Services{
     }
 
     async wishRemove(data) {
-        return await axios.post('/api/wishremove',data)
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/wishremove',data)
                 .then(async(res) => {
                     console.log(res)
                 })
     }
 
     async wishInfo(data) {
-        return await axios.post('/api/wishinfo',data)
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/wishinfo',data)
                 .then(async(res) => {
                     console.log(res)
                     return await res.data
