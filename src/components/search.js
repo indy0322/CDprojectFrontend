@@ -79,7 +79,7 @@ function Search() {
 
     const fetchTourAPI = async (place) => {
         try {
-            await axios.get(`https://apis.data.go.kr/B551011/KorService1/searchKeyword1?MobileOS=ETC&MobileApp=APPTest&_type=json&numOfRows=15&serviceKey=diRGobceZJ1dqnSFtFN9%2FahQNFIu%2BmELvY6Tup4OXCBdRQW%2F0sC8OpZWQoi5i5HDqz7ey0OLtjgP4088F5Yaqw%3D%3D&keyword=${place} `)
+            await axios.get(`https://apis.data.go.kr/B551011/KorService1/searchKeyword1?MobileOS=ETC&MobileApp=APPTest&_type=json&numOfRows=15&serviceKey=${process.env.REACT_APP_TOUR}&keyword=${place} `)
                 .then(async (res) => {
                     console.log(res.data.response.body.items.item)
                     setSearchResults(res.data.response.body.items.item)
