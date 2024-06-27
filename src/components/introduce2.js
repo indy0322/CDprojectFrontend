@@ -141,6 +141,7 @@ function Introduce() {
             heartBtn.classList.add("heartFull")
         }*/
         if(!wishHeart){
+            const date = new Date()
             const newwishData = {
                 nickName: nickName,
                 tourId: tourId,
@@ -148,7 +149,8 @@ function Introduce() {
                 tourImage: tourimage,
                 tourX: tourX,
                 tourY: tourY,
-                tourTitle: tourTitle
+                tourTitle: tourTitle,
+                date:date.getTime()
             }
             Services.wishRegister(newwishData)
         }else{
@@ -348,7 +350,16 @@ function Introduce() {
                 {isMobile ? <img src="/images/trans.png" style={{width:"5vw"}}></img> : <img src="/images/trans.png" style={{width:"2vw"}}></img>}
             </button>
             ({review.nickname}) <text style={{color:"blue"}}>{time.toDateString()}</text> <br/>
-            {reviewTrans ? <text>{review.review}</text> : <text>번역됨</text>}
+            {reviewTrans ? <text>{review.review}</text> : 
+
+            (review.langCode == googleLang) ? <text>{review.review}</text> :
+
+            <Translator
+                //cacheProvider={cacheProvider}
+                from={review.langCode}
+                to={googleLang}
+                googleApiKey={process.env.REACT_APP_GOOGLE}
+            ><text><Translate>{review.review}</Translate></text></Translator>}
         </div>)
     }
 
@@ -490,21 +501,6 @@ function Introduce() {
             > 
             <div className="reviewContainer" style={{height:"40vh",width:"100vw",backgroundColor:"skyblue",bottom:"0",position:"fixed"}}>
                 <div style={{height:"25vh",overflowY:"scroll"}}>
-                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                        (닉네임) 좋은 관광지~~~
-                    </div>
-                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                        (닉네임) 별로임
-                    </div>
-                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                        (닉네임) 그럭저럭 괜찮아
-                    </div>
-                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                        (닉네임) 서비스가 그닥...
-                    </div>
-                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                        (닉네임) 좋은 관광지~~~
-                    </div>
                     {reviews.map((review) => {
                         return(<ReviewItem review={review}></ReviewItem>)
                     })}
@@ -613,21 +609,6 @@ function Introduce() {
                 <div className="review" style={{backgroundColor:"skyblue",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", overflowY:"scroll"}}>
                     {/*<button className="button is-dark reviewRightBtn" onClick={onClickReviewBtn} style={{marginTop:"1vh",marginBottom:"2vw"}}>리뷰작성</button>*/}
                     <div style={{height:"70VW",overflowY:"scroll", marginBottom:"1vh"}}>
-                        <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                            (닉네임) 좋은 관광지~~~
-                        </div>
-                        <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                            (닉네임) 별로임
-                        </div>
-                        <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                            (닉네임) 그럭저럭 괜찮아
-                        </div>
-                        <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                            (닉네임) 서비스가 그닥...
-                        </div>
-                        <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
-                            (닉네임) 좋은 관광지~~~
-                        </div>
                         {reviews.map((review) => {
                             return(<ReviewItem review={review}></ReviewItem>)
                         })}

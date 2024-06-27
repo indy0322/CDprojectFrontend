@@ -259,9 +259,13 @@ function Introduce() {
             <div className="containerWish">
                 {wishlist.map((wish) => {
                     return(
-                        <div>
+                        <div key={wish.date} style={{textAlign:"center"}}>
+                            
+                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"20vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"20vw"}} src={wish.tourImage}/>}<br/>
+                            
                             {wish.tourId}<br/>
-                            {wish.tourTitle}
+                            {wish.tourTitle}<br/>
+                            {wish.tourAddress}
                         </div>
                     )
                 })}
