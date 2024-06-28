@@ -142,6 +142,13 @@ class Services{
                 })
     }
 
+    async wishRemove2(data) {
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/wishremove2',data)
+                .then(async(res) => {
+                    console.log(res)
+                })
+    }
+
     async wishInfo(data) {
         return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/wishinfo',data)
                 .then(async(res) => {

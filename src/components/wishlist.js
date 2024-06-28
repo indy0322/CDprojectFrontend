@@ -173,6 +173,12 @@ function Introduce() {
         modal.classList.remove("is-active")
     }
 
+    const onClickWishRemove = (e) => {
+        console.log(e.target.id)
+        setWishlist(wishlist.filter(w => String(w.date) !== e.target.id))
+        Services.wishRemove2({date: e.target.id})
+    }
+
 
     
 
@@ -259,13 +265,14 @@ function Introduce() {
             <div className="containerWish">
                 {wishlist.map((wish) => {
                     return(
-                        <div key={wish.date} style={{textAlign:"center"}}>
+                        <div className="notification is-primary" key={wish.date} style={{textAlign:"center",margin:"1vw"}}>
                             
-                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"20vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"20vw"}} src={wish.tourImage}/>}<br/>
-                            
-                            {wish.tourId}<br/>
-                            {wish.tourTitle}<br/>
-                            {wish.tourAddress}
+                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"20vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"20vw"}} src={wish.tourImage}/>}
+                            <button style={{float:"right"}}>
+                                <img src="/images/trashcan.png" style={{width:"1.5vw"}} id={wish.date} onClick={onClickWishRemove}></img>
+                            </button><br/>
+                            <strong style={{color:"black"}}>{wish.tourTitle}</strong><br/>
+                            <text style={{color:"black"}}>{wish.tourAddress}</text>
                         </div>
                     )
                 })}
