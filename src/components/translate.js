@@ -329,18 +329,24 @@ const modalOpen = () => {
 
             <div id="navbarBasicExample" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item">
-                        Home
-                    </a>
-                    <a class="navbar-item">
-                        Map
-                    </a>
-                    <a class="navbar-item">
-                        Translation
-                    </a>
-                    <a class="navbar-item">
-                        Wishlist
-                    </a>
+                  <a class="navbar-item" onClick={() => {
+                      window.location.href="/search"
+                  }}>
+                      TourList
+                  </a>
+                  <a class="navbar-item">
+                      Map
+                  </a>
+                  <a class="navbar-item" onClick={() => {
+                      window.location.href="/translate"
+                  }}>
+                      Translation
+                  </a>
+                  <a class="navbar-item" onClick={() => {
+                      window.location.href="/wishlist"
+                  }}>
+                      Wishlist
+                  </a>
                 </div>
 
                 <div class="navbar-end">

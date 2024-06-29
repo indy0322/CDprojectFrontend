@@ -200,16 +200,22 @@ function Introduce() {
 
                 <div id="navbarBasicExample" class="navbar-menu">
                     <div class="navbar-start">
-                        <a class="navbar-item">
-                            Home
+                        <a class="navbar-item" onClick={() => {
+                            window.location.href="/search"
+                        }}>
+                            TourList
                         </a>
                         <a class="navbar-item">
                             Map
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" onClick={() => {
+                            window.location.href="/translate"
+                        }}>
                             Translation
                         </a>
-                        <a class="navbar-item">
+                        <a class="navbar-item" onClick={() => {
+                            window.location.href="/wishlist"
+                        }}>
                             Wishlist
                         </a>
                     </div>
@@ -262,7 +268,7 @@ function Introduce() {
                     </div>
                 </div>
             </nav>
-            <div className="containerWish">
+            <div className="containerWish" style={{overflowY:"scroll"}}>
                 {wishlist.map((wish) => {
                     return(
                         <div className="notification is-primary" key={wish.date} style={{textAlign:"center",margin:"1vw"}}>
@@ -289,8 +295,10 @@ function Introduce() {
             {isMobile && <div className="isMobile">
                
             
-            
-            
+            <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
+            <div style={{alignItems:"center",justifyContent:"center",display:"flex", marginTop:"5vh",marginBottom:"2vh"}}>
+                <img src="/images/logo.png" alt="korea easy trip Logo" className="app-logo a-logo" style={{width:"60vw"}} />
+            </div>
             <Translator
                 //cacheProvider={cacheProvider}
                 from='en'
@@ -335,6 +343,22 @@ function Introduce() {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div style={{overflowY:"scroll", height:"60vh"}}>
+                {wishlist.map((wish) => {
+                    return(
+                        <div className="notification is-primary" key={wish.date} style={{textAlign:"center",margin:"1vw"}}>
+                            
+                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"40vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"50vw"}} src={wish.tourImage}/>}
+                            <button style={{float:"right"}}>
+                                <img src="/images/trashcan.png" style={{width:"4vw"}} id={wish.date} onClick={onClickWishRemove}></img>
+                            </button><br/>
+                            <strong style={{color:"black"}}>{wish.tourTitle}</strong><br/>
+                            <text style={{color:"black"}}>{wish.tourAddress}</text>
+                        </div>
+                    )
+                })}
+                
             </div>
 
             
