@@ -125,7 +125,7 @@ function Main(){
                 >
                 <nav class="navbar" role="navigation" aria-label="main navigation" style={{height:"8vh"}}>
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="https://bulma.io">
+                        <a class="navbar-item" href="/main">
                         <img src="/images/logo.png" width="50" height="28"/>
                         </a>
 

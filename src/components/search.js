@@ -247,7 +247,7 @@ function Search() {
             {isDesktop && <div>
                 <nav class="navbar" role="navigation" aria-label="main navigation" style={{height:"8vh"}}>
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="https://bulma.io">
+                        <a class="navbar-item" href="/main">
                         <img src="/images/logo.png" width="50" height="28"/>
                         </a>
 
@@ -656,11 +656,17 @@ function Search() {
 
 
                 <div className="bottomNav" style={{height:"10vh",width:"100vw",backgroundColor:"white",bottom:"0",position:"fixed",alignItems:"center",justifyContent:"center",display:"flex"}}>    
-                        <img type="button" src="/images/main.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                        <img type="button" src="/images/blackheart.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                        <img type="button" src="/images/translate.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                        <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                        <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}} onClick={modalOpen}></img>
+                    <img type="button" src="/images/main.png" onClick={() => {
+                        window.location.href="/main"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/blackheart.png" onClick={() => {
+                        window.location.href="/wishlist"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/translate.png" onClick={() => {
+                        window.location.href="/translate"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}} onClick={modalOpen}></img>
                 </div>       
             </div>}
         </div>
