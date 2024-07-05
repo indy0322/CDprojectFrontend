@@ -179,6 +179,13 @@ function Introduce() {
         Services.wishRemove2({date: e.target.id})
     }
 
+    const onClickMoveIntro = (wishData) => {
+        //console.log(wishData)
+        sessionStorage.removeItem('tourData')
+        sessionStorage.setItem('tourData',JSON.stringify({"contentid":wishData.tourId,"addr":wishData.tourAddress,"firstimage":wishData.tourImage,"mapx":wishData.tourX,"mapy":wishData.tourY,"title":wishData.tourTitle}))
+        window.location.href = `/introduce/${wishData.tourId}`
+    }
+
 
     
 
@@ -273,7 +280,7 @@ function Introduce() {
                     return(
                         <div className="notification is-primary" key={wish.date} style={{textAlign:"center",margin:"1vw"}}>
                             
-                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"20vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"20vw"}} src={wish.tourImage}/>}
+                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"20vw"}} onClick={() => {onClickMoveIntro(wish)}} src="/images/nothing.png"/> : <img className="tourImage" onClick={() => {onClickMoveIntro(wish)}} style={{height:"20vh",width:"20vw"}} src={wish.tourImage}/>}
                             <button style={{float:"right"}}>
                                 <img src="/images/trashcan.png" style={{width:"1.5vw"}} id={wish.date} onClick={onClickWishRemove}></img>
                             </button><br/>
@@ -348,7 +355,6 @@ function Introduce() {
                 {wishlist.map((wish) => {
                     return(
                         <div className="notification is-primary" key={wish.date} style={{textAlign:"center",margin:"1vw"}}>
-                            
                             {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"40vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"50vw"}} src={wish.tourImage}/>}
                             <button style={{float:"right"}}>
                                 <img src="/images/trashcan.png" style={{width:"4vw"}} id={wish.date} onClick={onClickWishRemove}></img>
