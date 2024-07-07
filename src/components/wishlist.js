@@ -284,7 +284,7 @@ function Introduce() {
                             <button style={{float:"right"}}>
                                 <img src="/images/trashcan.png" style={{width:"1.5vw"}} id={wish.date} onClick={onClickWishRemove}></img>
                             </button><br/>
-                            <strong style={{color:"black"}}>{wish.tourTitle}</strong><br/>
+                            <strong style={{color:"black"}} onClick={() => {onClickMoveIntro(wish)}}>{wish.tourTitle}</strong><br/>
                             <text style={{color:"black"}}>{wish.tourAddress}</text>
                         </div>
                     )
@@ -355,11 +355,11 @@ function Introduce() {
                 {wishlist.map((wish) => {
                     return(
                         <div className="notification is-primary" key={wish.date} style={{textAlign:"center",margin:"1vw"}}>
-                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"40vw"}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"50vw"}} src={wish.tourImage}/>}
+                            {wish.tourImage == "" ? <img className="tourImage" style={{height:"20vh",width:"40vw"}} onClick={() => {onClickMoveIntro(wish)}} src="/images/nothing.png"/> : <img className="tourImage" style={{height:"20vh",width:"50vw"}} onClick={() => {onClickMoveIntro(wish)}} src={wish.tourImage}/>}
                             <button style={{float:"right"}}>
                                 <img src="/images/trashcan.png" style={{width:"4vw"}} id={wish.date} onClick={onClickWishRemove}></img>
                             </button><br/>
-                            <strong style={{color:"black"}}>{wish.tourTitle}</strong><br/>
+                            <strong style={{color:"black"}} onClick={() => {onClickMoveIntro(wish)}}>{wish.tourTitle}</strong><br/>
                             <text style={{color:"black"}}>{wish.tourAddress}</text>
                         </div>
                     )
