@@ -27,7 +27,7 @@ function Search() {
 
             var userData = await Services.auth(option)
             if(userData.message == "정상 토큰"){
-                
+                setNickName(userData.data.email.split('@')[0])
                 let lang = JSON.parse(sessionStorage.getItem('language')) 
                 if(lang){
                     setGoogleLang(lang.lang1)
@@ -66,6 +66,7 @@ function Search() {
 
     const [searchResults, setSearchResults] = useState();
     const [googleLang, setGoogleLang] = useState('en')
+    const [nickName, setNickName] = useState('')
     const searchRefMobie = useRef()
     const searchRefDesktop = useRef()
 
@@ -282,6 +283,9 @@ function Search() {
 
                         <div class="navbar-end">
                             <div class="navbar-item">
+                                <div className="nickname" style={{marginRight:"1vw"}}>
+                                    <span class="tag is-success is-large">{nickName}</span>
+                                </div>
                                 <div class="buttons">
                                     <a class="button is-link" onClick={() => {
                                         sessionStorage.removeItem('userToken')
@@ -631,9 +635,10 @@ function Search() {
                     <div className="modal-background modalBackground" onClick={modalClose}></div>
                     <div className="modal-content">
                         <div className="box" style={{width:"80vw",margin:"10vw"}}>
-                            <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
-                    
-                            <div>
+                            <span class="tag is-warning">{nickName}</span>
+                            <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button><br/>
+                            
+                            <div style={{marginTop:"1vh"}}>
                                 <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
                                     sessionStorage.removeItem('userToken')
                                     window.location.href="/"

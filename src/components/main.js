@@ -22,7 +22,7 @@ function Main(){
 
             var userData = await Services.auth(option)
             if(userData.message == "정상 토큰"){
-                
+                setNickName(userData.data.email.split('@')[0])
                 let lang = JSON.parse(sessionStorage.getItem('language')) 
                 if(lang){
                     setGoogleLang(lang.lang1)
@@ -58,6 +58,7 @@ function Main(){
     const navigate = useNavigate()
 
     const [googleLang, setGoogleLang] = useState('en')
+    const [nickName, setNickName] = useState('')
 
     const isDesktop = useMediaQuery({ query: '(min-width:769px)' })
     const isMobile = useMediaQuery({ query: '(max-width:768px)' })
@@ -112,6 +113,19 @@ function Main(){
         setGoogleLang(e.target.id.split(' ')[0])
     }
 
+    const modalClose = () => {
+        const modal = document.getElementsByClassName("modal")[0]
+
+        modal.classList.remove("is-active")
+    }
+
+    const modalOpen = () => {
+        const modal = document.getElementsByClassName("modal")[0]
+        
+        modal.classList.add("is-active")
+    }
+
+
     
     
     return(
@@ -160,8 +174,11 @@ function Main(){
 
                         <div class="navbar-end">
                             <div class="navbar-item">
+                                <div className="nickname" style={{marginRight:"1vw"}}>
+                                    <span class="tag is-success is-large">{nickName}</span>
+                                </div>
                                 <div class="buttons">
-                                
+
                                     <a class="button is-link" onClick={() => {
                                         sessionStorage.removeItem('userToken')
                                         window.location.href="/"
@@ -299,6 +316,41 @@ function Main(){
                     </div>
                 </div>
                 </Translator>
+
+
+
+                <div className="modal">
+                    <div className="modal-background modalBackground" onClick={modalClose}></div>
+                    <div className="modal-content">
+                        <div className="box" style={{width:"80vw",margin:"10vw"}}>
+                            <span class="tag is-warning">{nickName}</span>
+                            <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button><br/>
+                            
+                            <div style={{marginTop:"1vh"}}>
+                                <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
+                                    sessionStorage.removeItem('userToken')
+                                    window.location.href="/"
+                                }}>Log out</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="bottomNav" style={{height:"10vh",width:"100vw",backgroundColor:"white",bottom:"0",position:"fixed",alignItems:"center",justifyContent:"center",display:"flex"}}>
+                    <img type="button" src="/images/main.png" onClick={() => {
+                        window.location.href="/main"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/blackheart.png" onClick={() => {
+                        window.location.href="/wishlist"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/translate.png" onClick={() => {
+                        window.location.href="/translate"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}} onClick={modalOpen}></img>
+                </div>
             </div>}
         </div>
     )

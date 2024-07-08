@@ -229,6 +229,9 @@ function Introduce() {
 
                     <div class="navbar-end">
                         <div class="navbar-item">
+                            <div className="nickname" style={{marginRight:"1vw"}}>
+                                <span class="tag is-success is-large">{nickName}</span>
+                            </div>
                             <div class="buttons">
                                 <a class="button is-link" onClick={() => {
                                     sessionStorage.removeItem('userToken')
@@ -284,8 +287,15 @@ function Introduce() {
                             <button style={{float:"right"}}>
                                 <img src="/images/trashcan.png" style={{width:"1.5vw"}} id={wish.date} onClick={onClickWishRemove}></img>
                             </button><br/>
-                            <strong style={{color:"black"}} onClick={() => {onClickMoveIntro(wish)}}>{wish.tourTitle}</strong><br/>
-                            <text style={{color:"black"}}>{wish.tourAddress}</text>
+                            <Translator
+                                //cacheProvider={cacheProvider}
+                                from='ko'
+                                to={googleLang}
+                                googleApiKey={process.env.REACT_APP_GOOGLE}
+                            >
+                                <strong style={{color:"black"}} onClick={() => {onClickMoveIntro(wish)}}><Translate>{wish.tourTitle}</Translate></strong><br/>
+                                <text style={{color:"black"}}><Translate>{wish.tourAddress}</Translate></text>
+                            </Translator>
                         </div>
                     )
                 })}
@@ -359,8 +369,15 @@ function Introduce() {
                             <button style={{float:"right"}}>
                                 <img src="/images/trashcan.png" style={{width:"4vw"}} id={wish.date} onClick={onClickWishRemove}></img>
                             </button><br/>
-                            <strong style={{color:"black"}} onClick={() => {onClickMoveIntro(wish)}}>{wish.tourTitle}</strong><br/>
-                            <text style={{color:"black"}}>{wish.tourAddress}</text>
+                            <Translator
+                                //cacheProvider={cacheProvider}
+                                from='ko'
+                                to={googleLang}
+                                googleApiKey={process.env.REACT_APP_GOOGLE}
+                            >
+                                <strong style={{color:"black"}} onClick={() => {onClickMoveIntro(wish)}}><Translate>{wish.tourTitle}</Translate></strong><br/>
+                                <text style={{color:"black"}}><Translate>{wish.tourAddress}</Translate></text>
+                            </Translator>
                         </div>
                     )
                 })}
@@ -386,9 +403,10 @@ function Introduce() {
                 <div className="modal-background modalBackground" onClick={modalClose}></div>
                 <div className="modal-content">
                     <div className="box" style={{width:"80vw",margin:"10vw"}}>
-                        <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
-                
-                        <div>
+                        <span class="tag is-warning">{nickName}</span>
+                        <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button><br/>
+                        
+                        <div style={{marginTop:"1vh"}}>
                             <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
                                 sessionStorage.removeItem('userToken')
                                 window.location.href="/"

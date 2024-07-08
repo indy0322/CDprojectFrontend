@@ -405,6 +405,9 @@ function Introduce() {
 
                     <div class="navbar-end">
                         <div class="navbar-item">
+                            <div className="nickname" style={{marginRight:"1vw"}}>
+                                <span class="tag is-success is-large">{nickName}</span>
+                            </div>
                             <div class="buttons">
                                 <a class="button is-link" onClick={() => {
                                     sessionStorage.removeItem('userToken')
@@ -645,9 +648,10 @@ function Introduce() {
                 <div className="modal-background modalBackground" onClick={modalClose}></div>
                 <div className="modal-content">
                     <div className="box" style={{width:"80vw",margin:"10vw"}}>
-                        <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
-                
-                        <div>
+                        <span class="tag is-warning">{nickName}</span>
+                        <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button><br/>
+                        
+                        <div style={{marginTop:"1vh"}}>
                             <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
                                 sessionStorage.removeItem('userToken')
                                 window.location.href="/"
