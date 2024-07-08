@@ -341,6 +341,22 @@ function Introduce() {
     const ReviewItem = ({review}) => {
         const [reviewTrans, setReviewTrans] = useState(true)
         const time = new Date(parseInt(review.date))
+        /*const [rrr, setRRR] = useState('')
+        useEffect(() => {
+            const transFunc =async (ment) => {
+                await axios.post(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${ment}&target=${googleLang}`)
+                    .then((res) => {
+                        setRRR(res.data.data.translations[0].translatedText)
+                    })
+            }
+
+            if(!reviewTrans){
+                transFunc(review.review)
+            }
+            
+        },[reviewTrans])*/
+
+        //위의 useEffect는 문장의 소스 언어를 몰라도 번역이 가능하도록 하게 하기위해 작성해 놓은것 사용하려면 주석을 풀고 <text>{rrr}</text>를 아래에 Translator와 Translate 로 감싸진 review.review를 지우고 넣으면 된다.
 
         return (<div className="box" key={review.date} style={{margin:"1vw", fontWeight:"bold"}}>
             {(nickName == review.nickname) && <button className="delete deleteBtn" id={review.date} aria-label="close" style={{float:"right"}} onClick={onClickReviewRemove}></button>}
@@ -352,14 +368,17 @@ function Introduce() {
             ({review.nickname}) <text style={{color:"blue"}}>{time.toDateString()}</text> <br/>
             {reviewTrans ? <text>{review.review}</text> : 
 
-            (review.langCode == googleLang) ? <text>{review.review}</text> :
-
+            (review.langCode == googleLang) ? <text>{review.review}</text> : 
             <Translator
                 //cacheProvider={cacheProvider}
                 from={review.langCode}
                 to={googleLang}
                 googleApiKey={process.env.REACT_APP_GOOGLE}
-            ><text><Translate>{review.review}</Translate></text></Translator>}
+            ><text><Translate>{review.review}</Translate></text></Translator>
+
+            
+
+            }
         </div>)
     }
 
