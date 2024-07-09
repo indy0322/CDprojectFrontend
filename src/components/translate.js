@@ -137,6 +137,7 @@ function TranslatePage() {
     chatting.appendChild(newText)
     await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${inputText}&target=${targetCode}&source=${sourceCode}`)
                     .then((res) => {
+                        console.log(res)
                         console.log(res.data.data.translations[0].translatedText)
                         setOutputText(res.data.data.translations[0].translatedText);
                         const newTransText = document.createElement('li')

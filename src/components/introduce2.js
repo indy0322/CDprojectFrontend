@@ -344,8 +344,16 @@ function Introduce() {
         /*const [rrr, setRRR] = useState('')
         useEffect(() => {
             const transFunc =async (ment) => {
-                await axios.post(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${ment}&target=${googleLang}`)
+
+                const params = {
+                    q: ment,
+                    target: googleLang,
+                    key: process.env.REACT_APP_GOOGLE,
+                    
+                };
+                await axios.get('https://translation.googleapis.com/language/translate/v2',{params})
                     .then((res) => {
+                        console.log(res)
                         setRRR(res.data.data.translations[0].translatedText)
                     })
             }
