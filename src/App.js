@@ -11,6 +11,8 @@ import Map from './components/map';
 import Translate from './components/translate';
 //import User from './components/user';
 import Main from './components/main';
+import NaverTestMap from './components/navermap/navertestmap';
+import GoogleTestMap from './components/googlemap/googletestmap';
 //import MapWithLanguageSetting from './components/maptestfolder/MapWithLanguageSetting';
 //import Tts from './components/tts';
 //import Besttestmap from './components/bestmapcode/testMap';
@@ -35,6 +37,8 @@ function App() {
           <Route path='/wishlist' element={<Wishlist/>}></Route>
           {/*<Route path='/tour/:tourName' element={<Introduce/>}></Route>*/}
           {/*<Route path='/review/:tourId' element={<Review/>}></Route>*/}
+          <Route path='/navermap' element={<NaverTestMap/>}></Route>
+          <Route path='/googlemap' element={<GoogleTestMap/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
