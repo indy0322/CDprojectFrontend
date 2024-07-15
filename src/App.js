@@ -37,7 +37,7 @@ function App() {
           <Route path='/wishlist' element={<Wishlist/>}></Route>
           {/*<Route path='/tour/:tourName' element={<Introduce/>}></Route>*/}
           {/*<Route path='/review/:tourId' element={<Review/>}></Route>*/}
-          <Route path='/navermap' element={<NaverTestMap/>}></Route>
+          <Route path='/naver' element={<NaverTestMap/>}></Route>
           <Route path='/googlemap' element={<GoogleTestMap/>}></Route>
         </Routes>
       </BrowserRouter>
