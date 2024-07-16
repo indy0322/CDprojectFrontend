@@ -317,17 +317,23 @@ function Introduce() {
     const onClickReviewRegister = () => {
         if(reviewContent != null){
             //console.log('내용이 없음')
-            const date = new Date()
-            console.log(date.getTime())
-            const newReview = {
-                nickname: nickName,
-                tourId: tourId,
-                langCode:googleLang,
-                date:date.getTime(),
-                review:reviewContent
+            if(reviewContent != ''){
+                const date = new Date()
+                console.log(date.getTime())
+                const newReview = {
+                    nickname: nickName,
+                    tourId: tourId,
+                    langCode:googleLang,
+                    date:date.getTime(),
+                    review:reviewContent
+                }
+                setReviews([...reviews,newReview])
+                Services.reviewRegister({nickname:nickName,tourId:tourId,langCode:googleLang,date:date.getTime(),review:reviewContent})
+            }else{
+                console.log('내용이 없음')
             }
-            setReviews([...reviews,newReview])
-            Services.reviewRegister({nickname:nickName,tourId:tourId,langCode:googleLang,date:date.getTime(),review:reviewContent})
+        }else{
+            console.log('내용이 없음')
         }
         //Services.reviewRegister({nickname:nickName,tourId:tourId,langCode:googleLang,review:reviewContent})
     }
@@ -342,6 +348,7 @@ function Introduce() {
         const [reviewTrans, setReviewTrans] = useState(true)
         const time = new Date(parseInt(review.date))
         const [rrr, setRRR] = useState('')
+        const [changedLang, setChangedLang] = useState('')
         useEffect(() => {
             const transFunc =async (ment) => {
 
@@ -357,10 +364,18 @@ function Introduce() {
                         console.log(res)
                         setRRR(res.data.data.translations[0].translatedText)
                     })
+
+                setChangedLang(googleLang)
             }
 
             if(!reviewTrans){
-                transFunc(review.review)
+                if(changedLang != googleLang){
+                    console.log('번역api 사용함')
+                    transFunc(review.review)
+                }else{
+                    console.log('번역api 사용하지 않음')
+                }
+                
             }
             
         },[reviewTrans])
