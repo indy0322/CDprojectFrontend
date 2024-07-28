@@ -497,6 +497,17 @@ const modalOpen = () => {
               <button class="button is-primary"style={{width:"15vw",height:"8vh",marginRight:"3vw",marginLeft:"3vw"}} onClick={translate}><img src='/images/trans.png' style={{width:"4vw"}}></img></button>
               {isRecording ? <button class="button is-primary" onClick={stop} style={{width:"15vw",height:"8vh"}}><img src='/images/stop.png' style={{width:"4vw"}}></img></button> : <button class="button is-primary" onClick={start} style={{width:"15vw",height:"8vh"}}><img src='/images/mic.png' style={{width:"4vw"}}></img></button>}  
             </div>
+            <div>
+              <button className='button is-primary' style={{width:"51vw", height:"8vh"}} onClick={() => {
+                  let temp = sourceLanguage
+                  setSourceLanguage(targetLanguage)
+                  setTargetLanguage(temp)
+
+                  let temp2 = sourceCode
+                  setSourceCode(targetCode)
+                  setTargetCode(temp2)
+                }}><img src='/images/transArrow.png' style={{width:"4vw"}}></img></button>
+            </div>
           </div>
         </section>
       </div>}
@@ -598,6 +609,17 @@ const modalOpen = () => {
                 {isMute ? <button onClick={() => setMute(false)} class="button is-primary"style={{width:"25vw",height:"8vh"}}><img src='/images/mute.png' style={{width:"12vw"}}></img></button> : <button onClick={() => setMute(true)} class="button is-primary"style={{width:"25vw",height:"8vh"}}><img src='/images/speaker.png' style={{width:"15vw"}}></img></button>}
                 <button class="button is-primary"style={{width:"25vw",height:"8vh",marginRight:"3vw",marginLeft:"3vw"}} onClick={translate}><img src='/images/trans.png' style={{width:"15vw"}}></img></button>
                 {isRecording ? <button class="button is-primary" onClick={stop} style={{width:"25vw",height:"8vh"}}><img src='/images/stop.png' style={{width:"12vw"}}></img></button> : <button class="button is-primary" onClick={start} style={{width:"25vw",height:"8vh"}}><img src='/images/mic.png' style={{width:"15vw"}}></img></button>}  
+              </div>
+              <div>
+                <button className='button is-primary' style={{width:"80vw", height:"5vh"}} onClick={() => {
+                    let temp = sourceLanguage
+                    setSourceLanguage(targetLanguage)
+                    setTargetLanguage(temp)
+
+                    let temp2 = sourceCode
+                    setSourceCode(targetCode)
+                    setTargetCode(temp2)
+                  }}><img src='/images/transArrow.png' style={{width:"9vw"}}></img></button>
               </div>
             </div>
           </section>
