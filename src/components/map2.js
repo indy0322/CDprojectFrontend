@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Translate,Translator } from 'react-auto-translate';
 import axios from "axios";
 import Services from "../services/services";
-function Map(){
+function Map2(){
 
     useEffect(async() => {
         const destination = document.getElementsByClassName('destination')[0]
@@ -77,6 +77,8 @@ function Map(){
                         startingPoint.value = res.data[0].text
                     }
                 })
+            
+            setCurrentMapState(true)
         
         },(err) => {
             console.log(err)
@@ -89,7 +91,7 @@ function Map(){
             contentLanguageTitle.innerHTML = lang.lang2
         }*/
 
-        let tourData = JSON.parse(sessionStorage.getItem('tourData'))
+        /*let tourData = JSON.parse(sessionStorage.getItem('tourData'))
         if(tourData){
             setTourimage(tourData.firstimage)
             setTourAddress(tourData.addr)
@@ -110,7 +112,7 @@ function Map(){
                 destination.value = tourData.addr
             }
             
-        }
+        }*/
 
     },[])
 
@@ -196,17 +198,21 @@ function Map(){
                 console.log(res.data.data.translations[0].translatedText)
                 title = res.data.data.translations[0].translatedText
             })*/
-        await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${startingPoint.value}&target=${e.target.id.split(' ')[0]}&source=${googleLang}`)
-            .then((res) => {
-                console.log(res.data.data.translations[0].translatedText)
-                startingPoint.value = res.data.data.translations[0].translatedText 
-            })
+        if(startingPoint.value != '' || startingPoint.value != null){
+            await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${startingPoint.value}&target=${e.target.id.split(' ')[0]}&source=${googleLang}`)
+                .then((res) => {
+                    console.log(res.data.data.translations[0].translatedText)
+                    startingPoint.value = res.data.data.translations[0].translatedText 
+                })
+        }
 
-        await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${destination.value}&target=${e.target.id.split(' ')[0]}&source=${googleLang}`)
-            .then((res) => {
-                console.log(res.data.data.translations[0].translatedText)
-                destination.value = res.data.data.translations[0].translatedText 
-            })
+        if(destination.value != '' || destination.value != null){
+            await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${destination.value}&target=${e.target.id.split(' ')[0]}&source=${googleLang}`)
+                .then((res) => {
+                    console.log(res.data.data.translations[0].translatedText)
+                    destination.value = res.data.data.translations[0].translatedText 
+                })
+        }
     }
 
     const onClickCurrentMap = async () => {
@@ -243,6 +249,7 @@ function Map(){
         const destination = document.getElementsByClassName('destination')[0]
         const startingPoint = document.getElementsByClassName('startingpoint')[0] 
         console.log(startingPoint.value, destination.value, googleLang)
+        setCurrentMapState(false)
 
         if(googleLang != 'ko'){
             await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${startingPoint.value}&target=ko&source=${googleLang}`)
@@ -377,11 +384,18 @@ function Map(){
                             height={380}
                             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE}&q=${currentPoint}&language=${googleLang}`}>
                             
-                        </iframe> : <iframe
+                        </iframe> : (endPoint != '') ?
+                        <iframe
                             className='tourMap'
                             width={800}
                             height={380}
                             src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE}&origin=${startPoint}&destination=${endPoint}&language=${googleLang}&mode=transit`}>
+                            
+                        </iframe> : <iframe
+                            className='tourMap'
+                            width={800}
+                            height={380}
+                            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE}&q=${currentPoint}&language=${googleLang}`}>
                             
                         </iframe>}
                         
@@ -395,7 +409,7 @@ function Map(){
                                 to={googleLang}
                                 googleApiKey={process.env.REACT_APP_GOOGLE}
                             >
-                            <span type="button" className="tag is-success" style={{width:"12vw",fontSize:"1vw"}} onClick={onClickCurrentMap}><Translate>{currentMapState ? "Route to tour" :"Current location"}</Translate></span>
+                            <span type="button" className="tag is-success" style={{width:"12vw",fontSize:"1vw"}} onClick={onClickCurrentMap}><Translate>{currentMapState ? "Route to tour" : (endPoint != '') ? "Current location" : "No route information"}</Translate></span>
                             </Translator> 
                         </div>
                         
@@ -465,11 +479,18 @@ function Map(){
                             height="250vh"
                             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE}&q=${currentPoint}&language=${googleLang}`}>
                             
-                        </iframe> : <iframe
+                        </iframe> : (endPoint != '') ?
+                        <iframe
                             className='tourMap'
                             width="350vw"
                             height="250vh"
                             src={`https://www.google.com/maps/embed/v1/directions?key=${process.env.REACT_APP_GOOGLE}&origin=${startPoint}&destination=${endPoint}&language=${googleLang}&mode=transit`}>
+                        </iframe> : <iframe
+                            className='tourMap'
+                            width="350vw"
+                            height="250vh"
+                            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE}&q=${currentPoint}&language=${googleLang}`}>
+                            
                         </iframe>}
                     </div>
                     
@@ -481,7 +502,7 @@ function Map(){
                                 to={googleLang}
                                 googleApiKey={process.env.REACT_APP_GOOGLE}
                             >
-                            <span type="button" className="tag is-success" onClick={onClickCurrentMap}><Translate>{currentMapState ? "Route to tour" :"Current location"}</Translate></span>
+                            <span type="button" className="tag is-success" onClick={onClickCurrentMap}><Translate>{currentMapState ? "Route to tour" : (endPoint != '') ? "Current location" : "No route information"}</Translate></span>
                             </Translator> 
                         </div>
                         
@@ -610,4 +631,4 @@ function Map(){
     )
 }
 
-export default Map;
+export default Map2;

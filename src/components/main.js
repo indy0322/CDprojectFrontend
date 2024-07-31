@@ -157,7 +157,9 @@ function Main(){
                             }}>
                                 TourList
                             </a>
-                            <a class="navbar-item">
+                            <a class="navbar-item" onClick={() => {
+                                window.location.href="/map2"
+                            }}>
                                 Map
                             </a>
                             <a class="navbar-item" onClick={() => {
@@ -348,7 +350,9 @@ function Main(){
                     <img type="button" src="/images/translate.png" onClick={() => {
                         window.location.href="/translate"
                     }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                    <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/map.png" onClick={() => {
+                        window.location.href="/map2"
+                    }} style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
                     <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}} onClick={modalOpen}></img>
                 </div>
             </div>}
