@@ -231,8 +231,10 @@ function Introduce() {
 
                     <div class="navbar-end">
                         <div class="navbar-item">
-                            <div className="nickname" style={{marginRight:"1vw"}}>
-                                <span class="tag is-success is-large">{nickName}</span>
+                            <div className="nickname" style={{marginRight:"1vw"}} onClick={() => {
+                                window.location.href="/user"
+                            }}>
+                                <a class="button is-success" style={{fontSize:"1.1vw"}}>{nickName}</a>
                             </div>
                             <div class="buttons">
                                 <a class="button is-link" onClick={() => {
@@ -409,6 +411,12 @@ function Introduce() {
                     <div className="box" style={{width:"80vw",margin:"10vw"}}>
                         <span class="tag is-warning">{nickName}</span>
                         <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button><br/>
+
+                        <div style={{marginTop:"1vh"}}>
+                            <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
+                                window.location.href="/user"
+                            }}>Profile</button>
+                        </div>
                         
                         <div style={{marginTop:"1vh"}}>
                             <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {

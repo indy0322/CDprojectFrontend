@@ -176,8 +176,10 @@ function Main(){
 
                         <div class="navbar-end">
                             <div class="navbar-item">
-                                <div className="nickname" style={{marginRight:"1vw"}}>
-                                    <span class="tag is-success is-large">{nickName}</span>
+                                <div className="nickname" style={{marginRight:"1vw"}} onClick={() => {
+                                    window.location.href="/user"
+                                }}>
+                                    <a class="button is-success" style={{fontSize:"1.1vw"}}>{nickName}</a>
                                 </div>
                                 <div class="buttons">
 
@@ -234,7 +236,7 @@ function Main(){
                     <div className='translateBtn'>
                         <button className="button is-info" style={{width:"70vw", height:"20vh", fontSize:"4vw"}} onClick={() => {
                             window.location.href = "/translate"
-                        }}><Translate>Translate</Translate></button>
+                        }}><Translate>Translation</Translate></button>
                     </div>
                     <div className='tourSearchBtn' style={{marginTop:"5vh"}}>
                         <button className="button is-success" style={{width:"70vw", height:"20vh", fontSize:"4vw"}} onClick={() => {
@@ -267,7 +269,7 @@ function Main(){
                     <div className='translateBtn'>
                         <button className="button is-info" style={{width:"90vw", height:"20vh", fontSize:"8vw"}} onClick={() => {
                             window.location.href = "/translate"
-                        }}><Translate>Translate</Translate></button>
+                        }}><Translate>Translation</Translate></button>
                     </div>
                     <div className='tourSearchBtn' style={{marginTop:"5vh"}}>
                         <button className="button is-success" style={{width:"90vw", height:"20vh", fontSize:"8vw"}} onClick={() => {
@@ -328,6 +330,12 @@ function Main(){
                             <span class="tag is-warning">{nickName}</span>
                             <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button><br/>
                             
+                            <div style={{marginTop:"1vh"}}>
+                                <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
+                                    window.location.href="/user"
+                                }}>Profile</button>
+                            </div>
+
                             <div style={{marginTop:"1vh"}}>
                                 <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={() => {
                                     sessionStorage.removeItem('userToken')

@@ -71,6 +71,21 @@ class Services{
             })
     }
 
+    async changePassword(data) {
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/changepassword',data)
+            .then((res) => {
+                //console.log(res.data)
+                return res.data
+            })
+    }
+
+    async changeLang(data) {
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/changelang',data)
+            .then((res) => {
+                return res.data
+            })
+    }
+
     async reviewRegister(data) {
         return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewregister`,data)
                 .then(async(res) => {
@@ -179,6 +194,41 @@ class Services{
                 console.log(res)
                 const audioObjectUrl = URL.createObjectURL(res.data)
                 return audioObjectUrl
+            })
+    }
+
+    async hknuChatgpt(data){
+        //console.log(data.question, data.key)
+        /*return await axios.post(process.env.REACT_APP_HKNUURL,{
+            "service": "gpt",
+            "question": `${data.tourTitle}을 ${data.language} 설명해`,
+            "hash": data.key
+        },{
+            headers:{
+                'Content-Type':'application/json'
+            },
+            withCredentials: true
+        }).then((res) => {
+            console.log(res)
+            
+        })*/
+        /*return await fetch('https://cesrv.hknu.ac.kr/srv/gpt',{
+            method: "post",
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: {
+                "service": "gpt",
+                "question": `${data.tourTitle}을 ${data.language} 설명해`,
+                "hash": data.key
+            },
+            mode: 'no-cors'
+        }).then(async (res) => {
+            console.log(res)
+        })*/
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/hknuchatgpt',data)
+            .then((res) => {
+                console.log(res)
             })
     }
 }

@@ -7,9 +7,11 @@ import Wishlist from './components/wishlist'
 //import Review from './components/review';
 import Start from './components/start';
 import Search from './components/search';
+import User from './components/user';
 import Map from './components/map';
 import Map2 from './components/map2';
 import Translate from './components/translate';
+import Account from './components/account';
 //import User from './components/user';
 import Main from './components/main';
 import NaverTestMap from './components/navermap/navertestmap';
@@ -30,6 +32,8 @@ function App() {
           <Route path='/search' element={<Search/>}></Route>
           {/*<Route path="/user" element={<User/>}></Route>*/}
           <Route path="/main" element={<Main/>}></Route>
+          <Route path="/user" element={<User/>}></Route>
+          <Route path="/account" element={<Account/>}></Route>
           <Route path='/map' element={<Map/>}></Route>
           <Route path='/map2' element={<Map2/>}></Route>
           {/*<Route path='/bestmap' element={<Besttestmap/>}></Route>*/}

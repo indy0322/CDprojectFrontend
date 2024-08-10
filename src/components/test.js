@@ -179,6 +179,14 @@ function Test() {
             container.classList.add("close")
         }
     }
+
+    const tourInformation = async () => {
+        await Services.hknuChatgpt({
+            tourTitle: "간송미술관",
+            language: "English",
+            key: process.env.REACT_APP_CHATHKNU
+        })
+    }
     
     
 
@@ -252,7 +260,9 @@ function Test() {
                 이메일:<input onChange={handleId}></input>
                 비밀번호:<input onChange={handlePw}></input>
                 <button onClick={registerBtn}>회원가입</button>
+                <button onClick={tourInformation}>간송미술관 정보</button>
             </div>
+
 
             
             <div className="container close" style={{height:"15vh",width:"100vw",backgroundColor:"black",bottom:"0",position:"fixed", transition: "height 0.5s"}}>
