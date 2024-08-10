@@ -275,6 +275,9 @@ function User(){
 
                     setMessage(result)
                     modalOpen2()
+                }else{
+                    setMessage(result)
+                    modalOpen2()
                 }
             }else{
                 setMessage('Please enter the correct password to change')
@@ -291,6 +294,7 @@ function User(){
         if(currentPassword){
             let result = await Services.changeLang({
                 email: userEmail,
+                currentPassword: currentPassword,
                 code:userLangCode,
                 language1:userLang1,
                 language2:userLang2
@@ -314,6 +318,9 @@ function User(){
                     modalOpen2()
                 }
                 
+            }else{
+                setMessage(result)
+                modalOpen2()
             }
         }else{
             setMessage('Please enter your password correctly')
@@ -455,7 +462,7 @@ function User(){
                 <div className='contentContainer' style={{display:"none", width:"30vw",marginRight:"35vw",marginLeft:"35vw",marginTop:"1vw", marginBottom:"1vw"}}>
                     <div className='passwordContainer' style={{border: "2px solid skyblue", marginBottom:"1vh", padding:"1vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
-                        <input className="password input is-info currentPassword" type="text" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
+                        <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input change password</Translate></label>
                         <input className="password input is-info changePassword" type="password" onChange={(e) => setChangPassword(e.target.value)}></input>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input change password again</Translate></label>
@@ -469,7 +476,7 @@ function User(){
                     </div>
                     <div className='langContainer' style={{border: "2px solid skyblue", padding:"1vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
-                        <input className="password input is-info currentPassword" type="text" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
+                        <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <div style={{marginBottom:"1vw"}}>
                             <label className="label" style={{float:"left",color:"black"}}><Translate>Please select the language you want to change</Translate></label>
                         </div><br/>
@@ -481,7 +488,7 @@ function User(){
                                 </button>
                             </div>
                             <div className="dropdown-menu" id="dropdown-menu3" role="menu" style={{width:"100%"}}>
-                                <div className="dropdown-content" style={{width:"10vw",height:"18vh",overflowY:"scroll"}}>
+                                <div className="dropdown-content" style={{width:"10vw",height:"13vh",overflowY:"scroll"}}>
                                     <a href="#" class="dropdown-item" style={{width:"10vw",padding:"1vw"}} id="ko 한국어 한국어" onClick={onClickChangeLanguage2}>
                                         한국어
                                     </a>
@@ -570,7 +577,7 @@ function User(){
                 <div className='contentContainer' style={{display:"none",margin:"4vw"}}>
                     <div className='passwordContainer' style={{border:"2px solid skyblue", padding:"1vw", marginBottom:"2vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
-                        <input className="password input is-info currentPassword" type="text" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
+                        <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input change password</Translate></label>
                         <input className="password input is-info changePassword" type="password" onChange={(e) => setChangPassword(e.target.value)}></input>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input change password again</Translate></label>
@@ -584,7 +591,7 @@ function User(){
                     </div>
                     <div className='langContainer' style={{border:"2px solid skyblue", padding:"1vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
-                        <input className="password input is-info currentPassword" type="text" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
+                        <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <div style={{marginBottom:"5vh"}}>
                             <label className="label" style={{float:"left",color:"black"}}><Translate>Please select the language you want to change</Translate></label>
                         </div><br/>
