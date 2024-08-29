@@ -163,6 +163,51 @@ function TranslatePage() {
     
   };
 
+  const translate2 = async(text) => {
+    const newText = document.createElement('li')
+    newText.innerHTML = text
+    newText.style.float = "right"
+    newText.style.clear = "both"
+    newText.style.marginRight = "1vw"
+    newText.style.marginBottom = "1vh"
+    newText.style.marginTop = "1vh"
+    newText.style.whiteSpace = "normal"
+    newText.style.height = "auto"
+    newText.classList.add('tag')
+    newText.classList.add('is-medium')
+    newText.classList.add('is-rounded')
+    newText.classList.add('is-link')
+    
+    const chatting = document.getElementsByClassName('chatting')[0]
+    chatting.appendChild(newText)
+    await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${text}&target=${targetCode}&source=${sourceCode}`)
+                    .then((res) => {
+                        console.log(res)
+                        console.log(res.data.data.translations[0].translatedText)
+                        setOutputText(res.data.data.translations[0].translatedText);
+                        const newTransText = document.createElement('li')
+                        newTransText.innerHTML = res.data.data.translations[0].translatedText
+                        newTransText.style.clear = "both"
+                        newTransText.style.float = "left"
+                        newTransText.style.marginLeft = "1vw"
+                        newTransText.style.marginBottom = "1vh"
+                        newTransText.style.marginTop = "1vh"
+                        newTransText.style.whiteSpace = "normal"
+                        newTransText.style.height = "auto"
+                        newTransText.classList.add('tag')
+                        newTransText.classList.add('is-medium')
+                        newTransText.classList.add('is-rounded')
+                        newTransText.classList.add('is-success')
+                        
+                        chatting.appendChild(newTransText)
+                        if(!isMute){
+                          audioCall(res.data.data.translations[0].translatedText)
+                        }
+                                    
+                    })
+    
+  };
+
   const onClickBackBtn = (e) => {
     navigate(-1)
   }
@@ -262,6 +307,7 @@ function TranslatePage() {
         console.log(res.data.text)
         setInputText(res.data.text)
         //audioCall2(res.data.text)
+        translate2(res.data.text)
     })
   
   }

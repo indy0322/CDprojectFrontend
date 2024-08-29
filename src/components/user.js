@@ -460,7 +460,7 @@ function User(){
                     </div>
                 </div>
                 <div className='contentContainer' style={{display:"none", width:"30vw",marginRight:"35vw",marginLeft:"35vw",marginTop:"1vw", marginBottom:"1vw"}}>
-                    <div className='passwordContainer' style={{border: "2px solid skyblue", marginBottom:"1vh", padding:"1vw"}}>
+                    <div className='passwordContainer' style={{border: "2px solid skyblue",borderRadius:'8px', marginBottom:"1vh", padding:"1vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
                         <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input change password</Translate></label>
@@ -474,7 +474,7 @@ function User(){
                             </a>
                         </div>
                     </div>
-                    <div className='langContainer' style={{border: "2px solid skyblue", padding:"1vw"}}>
+                    <div className='langContainer' style={{border: "2px solid skyblue",borderRadius:'8px', padding:"1vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
                         <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <div style={{marginBottom:"1vw"}}>
@@ -525,7 +525,7 @@ function User(){
                     <div className="modal-content" style={{alignItems:"center",justifyContent:"center",display:"flex"}}>
                         <div className="box" style={{width:"20vw"}}>
                             <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose2}></button><br/>
-                            <span class="tag is-warning"><Translate>{message}</Translate></span>
+                            <p className="card-header-title" style={{alignItems:"center",justifyContent:"center",display:"flex"}}><Translate>{message}</Translate></p>
                         </div>
                     </div>
                 </div>
@@ -575,7 +575,7 @@ function User(){
                 </div>
 
                 <div className='contentContainer' style={{display:"none",margin:"4vw"}}>
-                    <div className='passwordContainer' style={{border:"2px solid skyblue", padding:"1vw", marginBottom:"2vw"}}>
+                    <div className='passwordContainer' style={{border:"2px solid skyblue",borderRadius:'8px', padding:"1vw", marginBottom:"2vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
                         <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input change password</Translate></label>
@@ -589,7 +589,7 @@ function User(){
                             </a>
                         </div> 
                     </div>
-                    <div className='langContainer' style={{border:"2px solid skyblue", padding:"1vw"}}>
+                    <div className='langContainer' style={{border:"2px solid skyblue",borderRadius:'8px', padding:"1vw"}}>
                         <label className="label" style={{float:"left",color:"black"}}><Translate>Please input current password</Translate></label>
                         <input className="password input is-info currentPassword" type="password" style={{marginBottom:"1vw"}} onChange={(e) => setcurrentPassword(e.target.value)}></input>
                         <div style={{marginBottom:"5vh"}}>
@@ -709,7 +709,7 @@ function User(){
                     <div className="modal-content" style={{alignItems:"center",justifyContent:"center",display:"flex"}}>
                         <div className="box" style={{width:"80vw",margin:"10vw"}}>
                             <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose2}></button><br/>
-                            <span class="tag is-warning"><Translate>{message}</Translate></span>
+                            <p className="card-header-title" style={{alignItems:"center",justifyContent:"center",display:"flex"}}><Translate>{message}</Translate></p>
                         </div>
                     </div>
                 </div>
