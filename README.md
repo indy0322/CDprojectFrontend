@@ -1,4 +1,4 @@
-# 🗺️ 관광 정보 웹 서비스 (React + Node.js)
+# 캡스톤 디자인 프로젝트 프론트엔드
 
 이 프로젝트는 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)를 기반으로 한 SPA(Single Page Application)로,  
 ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)와 연동되어 사용자 인터랙션 및 데이터 처리를 수행하는 웹 애플리케이션입니다.
