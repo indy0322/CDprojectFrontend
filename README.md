@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# 🗺️ 관광 정보 웹 서비스 (React + Node.js)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+이 프로젝트는 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)를 기반으로 한 SPA(Single Page Application)로,  
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)와 연동되어 사용자 인터랙션 및 데이터 처리를 수행하는 웹 애플리케이션입니다.
 
-## Available Scripts
+## 💡 주요 기능
 
-In the project directory, you can run:
+- ✅ **회원가입 및 로그인 페이지**
+  - JWT 기반 인증
+  - 사용자 상태 유지 및 보호된 라우팅
 
-### `npm start`
+- 🌍 **통역기 기능 페이지**
+  - 사용자가 입력한 텍스트를 다양한 언어로 번역
+  - 텍스트를 음성으로, 음성을 텍스트로 변환
+  - 외부 번역 API 연동
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 📌 **지도 페이지**
+  - 관광지 위치 시각화
+  - 현재 위치에서 관광지까지의 경로 출력
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 🔍 **관광지 검색 페이지**
+  - 키워드로 지역 및 명소 검색
+  - 관광지 설명 출력
 
-### `npm test`
+- ⭐ **관광지 즐겨찾기 페이지**
+  - 로그인 사용자 기준 즐겨찾기 추가/삭제
+  - 즐겨찾기 목록 조회 가능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 사용 기술
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| 영역       | 기술 스택                                  |
+|------------|---------------------------------------------|
+| 프론트엔드 | React.js, React Router, Axios, CSS/Styled-Components |
+| 백엔드     | Node.js, Express.js                         |
+| 인증       | JWT (JSON Web Token)                        |
+| API 통신   | REST API 기반 통신                          |
+| 지도 기능  | Google Map API          |
