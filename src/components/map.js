@@ -20,7 +20,6 @@ function Map(){
                     "Content-Type": "application/json",
                     "Authorization": userToken.token
                 },
-                //method: "GET",
             }
 
             var userData = await Services.auth(option)
@@ -82,12 +81,6 @@ function Map(){
             console.log(err)
         })
 
-        /*let lang = JSON.parse(sessionStorage.getItem('language')) 
-        if(lang){
-            setGoogleLang(lang.lang1)
-            const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
-            contentLanguageTitle.innerHTML = lang.lang2
-        }*/
 
         let tourData = JSON.parse(sessionStorage.getItem('tourData'))
         if(tourData){
@@ -189,13 +182,6 @@ function Map(){
 
         console.log("starting.value: ", startingPoint.value, "destination.value: ", destination.value, "goolgeLang: ",googleLang, "e.target.id: ", e.target.id.split(' ')[0])
 
-        /*let title;
-
-        await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${tourTitle}&target=${e.target.id.split(' ')[0]}&source=ko`)
-            .then((res) => {
-                console.log(res.data.data.translations[0].translatedText)
-                title = res.data.data.translations[0].translatedText
-            })*/
         await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${startingPoint.value}&target=${e.target.id.split(' ')[0]}&source=${googleLang}`)
             .then((res) => {
                 console.log(res.data.data.translations[0].translatedText)
@@ -223,15 +209,6 @@ function Map(){
                     console.log(res.data[0].text)
                     setCurrentPoint(res.data[0].text)
                     
-                    /*if(tmplang != 'ko'){
-                        await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${res.data[0].text}&target=${tmplang}&source=ko`)
-                            .then((res) => {
-                                console.log(res.data.data.translations[0].translatedText)
-                                startingPoint.value = res.data.data.translations[0].translatedText
-                            })
-                    }else{
-                        startingPoint.value = res.data[0].text
-                    }*/
                 })
         
         },(err) => {
@@ -460,7 +437,6 @@ function Map(){
                 <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw",zIndex:"1"}} onClick={onClickBackBtn} src="/images/back.png"></img>
                 <div className="contentsContainer" style={{position:"fixed", width:"100vw", height:"90vh",alignItems:"center",display:"flex", flexDirection:"column"}}>
                     <div>
-                        {/*<img src='/images/mapkorea.png' style={{width:"100vw",height:"50vh"}}></img>*/}
                         {currentMapState ? <iframe
                             className='tourMap'
                             width="350vw"

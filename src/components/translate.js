@@ -267,7 +267,6 @@ function TranslatePage() {
         .start()
         .then(() => {
             setIsRecording(true)
-          //this.setState({ isRecording: true });
         }).catch((e) => console.error(e));
     }
   };
@@ -286,8 +285,6 @@ function TranslatePage() {
             lastModified: Date.now()
         });
         speechtotext(file)
-        //setFile(file)
-        //this.setState({ blobURL, isRecording: false });
       }).catch((e) => console.log(e));
   };
 
@@ -306,14 +303,13 @@ function TranslatePage() {
     .then((res) => {
         console.log(res.data.text)
         setInputText(res.data.text)
-        //audioCall2(res.data.text)
         translate2(res.data.text)
     })
   
   }
 
   const audioCall = async (text) => {
-    /*const aaa = await Service.audioMp3({speak: text})
+    const aaa = await Services.audioMp3({speak: text})
     console.log(aaa)
     const tmp = new Audio(aaa)
     tmp.play()
@@ -321,9 +317,9 @@ function TranslatePage() {
     setTimeout(() => {
         URL.revokeObjectURL(aaa)
         console.log('삭제됨')
-    },2000)*/
+    },2000)
 
-    await axios.post('https://api.openai.com/v1/audio/speech',{
+    /*await axios.post('https://api.openai.com/v1/audio/speech',{
         "model": "tts-1",
         "input": text,
         "voice": "alloy"
@@ -345,7 +341,7 @@ function TranslatePage() {
             URL.revokeObjectURL(audioObjectUrl)
             console.log('삭제됨')
         },2000)
-    })
+    })*/
 }
 
 const modalClose = () => {

@@ -56,22 +56,6 @@ function Introduce() {
             sessionStorage.removeItem('tourData')
             window.location.href = '/'
         }
-
-
-
-        /*let tourData = JSON.parse(sessionStorage.getItem('tourData'))
-        if(tourData){
-            const tourImage = document.getElementsByClassName('tourImage')[0]
-            tourImage.src = tourData.firstimage
-            const reviews = await Services.reviewInfo({tourId:tourData.contentid})
-            
-            setReviews(reviews)
-            
-            setTourimage(tourData.firstimage)
-            setTourAddress(tourData.addr)
-            setTourTitle(tourData.title)
-            setTourId(tourData.contentid)
-        }*/
         
     },[])
 
@@ -180,7 +164,6 @@ function Introduce() {
     }
 
     const onClickMoveIntro = (wishData) => {
-        //console.log(wishData)
         sessionStorage.removeItem('tourData')
         sessionStorage.setItem('tourData',JSON.stringify({"contentid":wishData.tourId,"addr":wishData.tourAddress,"firstimage":wishData.tourImage,"mapx":wishData.tourX,"mapy":wishData.tourY,"title":wishData.tourTitle}))
         window.location.href = `/introduce/${wishData.tourId}`

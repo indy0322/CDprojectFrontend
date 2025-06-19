@@ -84,36 +84,6 @@ function Map2(){
             console.log(err)
         })
 
-        /*let lang = JSON.parse(sessionStorage.getItem('language')) 
-        if(lang){
-            setGoogleLang(lang.lang1)
-            const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
-            contentLanguageTitle.innerHTML = lang.lang2
-        }*/
-
-        /*let tourData = JSON.parse(sessionStorage.getItem('tourData'))
-        if(tourData){
-            setTourimage(tourData.firstimage)
-            setTourAddress(tourData.addr)
-            setTourTitle(tourData.title)
-            setTourId(tourData.contentid)
-            setTourX(tourData.mapx)
-            setTourY(tourData.mapy)
-            setEndPoint(tourData.addr)
-            
-            if(tmplang != 'ko'){
-                await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${tourData.addr}&target=${tmplang}&source=ko`)
-                    .then((res) => {
-                        console.log('tmplang: ', tmplang)
-                        console.log(res.data.data.translations[0].translatedText)
-                        destination.value = res.data.data.translations[0].translatedText
-                    })
-            }else{
-                destination.value = tourData.addr
-            }
-            
-        }*/
-
     },[])
 
     const navigate = useNavigate()
@@ -191,13 +161,6 @@ function Map2(){
 
         console.log("starting.value: ", startingPoint.value, "destination.value: ", destination.value, "goolgeLang: ",googleLang, "e.target.id: ", e.target.id.split(' ')[0])
 
-        /*let title;
-
-        await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${tourTitle}&target=${e.target.id.split(' ')[0]}&source=ko`)
-            .then((res) => {
-                console.log(res.data.data.translations[0].translatedText)
-                title = res.data.data.translations[0].translatedText
-            })*/
         if(startingPoint.value != '' || startingPoint.value != null){
             await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${startingPoint.value}&target=${e.target.id.split(' ')[0]}&source=${googleLang}`)
                 .then((res) => {
@@ -229,15 +192,6 @@ function Map2(){
                     console.log(res.data[0].text)
                     setCurrentPoint(res.data[0].text)
                     
-                    /*if(tmplang != 'ko'){
-                        await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${res.data[0].text}&target=${tmplang}&source=ko`)
-                            .then((res) => {
-                                console.log(res.data.data.translations[0].translatedText)
-                                startingPoint.value = res.data.data.translations[0].translatedText
-                            })
-                    }else{
-                        startingPoint.value = res.data[0].text
-                    }*/
                 })
         
         },(err) => {

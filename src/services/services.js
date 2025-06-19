@@ -21,7 +21,7 @@ class Services{
                 .then((res) => {
                     console.log(res.data)
                     return res.data
-                    //setToken(res.data.token)
+                    
                 })
     }
 
@@ -39,28 +39,15 @@ class Services{
         catch(err){
             
             if(err.response.data.code == '401'){
-                //console.log(err.response.data.message)
+                
                 return await err.response.data
             }
             if(err.response.data.code == '419'){
-                //console.log(err.response.data.message)
+                
                 return await err.response.data
             }
             
         }
-        /*return fetch('/api/auth',option)
-                .then(async(res) => {
-                    return await res.json()
-                })
-                .then((res) => {
-                    console.log(res.message)
-                    if(res.message === "정상 토큰"){
-                        console.log(res.data.nickname)
-                    }
-                    else{
-                        console.log("잘못된 토큰 또는 토큰이 없다")
-                    }
-                })*/
     }
 
     async register(data) {
@@ -74,7 +61,6 @@ class Services{
     async changePassword(data) {
         return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/changepassword',data)
             .then((res) => {
-                //console.log(res.data)
                 return res.data
             })
     }
@@ -92,18 +78,6 @@ class Services{
                     console.log(res)
                     return await res.data
                 })
-        /*try{
-            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewregister`,data)
-                .then(async(res) => {
-                    console.log(res.data)
-                    return await res.data
-                })
-        }catch(err){
-            
-            console.log(err)
-            return await err
-        }*/
-        
     }
 
     async reviewRemove(data) {
@@ -112,16 +86,6 @@ class Services{
                     console.log(res)
                     return await res.data
                 })
-        /*try{
-            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewremove`,data)
-                .then(async (res) => {
-                    console.log(res.data)
-                    return await res.data
-                })
-        }catch(err){
-            console.log(err)
-            return await err
-        }*/
     }
 
     async reviewInfo(data) {
@@ -130,16 +94,6 @@ class Services{
                     console.log(res)
                     return await res.data
                 })
-        /*try{
-            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewinfo`,data)
-                .then(async(res) => {
-                    console.log(res)
-                    return await res.data
-                })
-        }catch(err){
-            console.log(err)
-            return await err
-        }*/
     }
 
     async wishRegister(data) {
@@ -194,41 +148,6 @@ class Services{
                 console.log(res)
                 const audioObjectUrl = URL.createObjectURL(res.data)
                 return audioObjectUrl
-            })
-    }
-
-    async hknuChatgpt(data){
-        //console.log(data.question, data.key)
-        /*return await axios.post(process.env.REACT_APP_HKNUURL,{
-            "service": "gpt",
-            "question": `${data.tourTitle}을 ${data.language} 설명해`,
-            "hash": data.key
-        },{
-            headers:{
-                'Content-Type':'application/json'
-            },
-            withCredentials: true
-        }).then((res) => {
-            console.log(res)
-            
-        })*/
-        /*return await fetch('https://cesrv.hknu.ac.kr/srv/gpt',{
-            method: "post",
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: {
-                "service": "gpt",
-                "question": `${data.tourTitle}을 ${data.language} 설명해`,
-                "hash": data.key
-            },
-            mode: 'no-cors'
-        }).then(async (res) => {
-            console.log(res)
-        })*/
-        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/hknuchatgpt',data)
-            .then((res) => {
-                console.log(res)
             })
     }
 }

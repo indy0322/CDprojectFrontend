@@ -9,16 +9,6 @@ import Services from "../services/services";
 
 function Start() {
 
-    useEffect(() => {
-        /*let lang = JSON.parse(localStorage.getItem('language'))
-        if(lang){
-            //console.log(lang.lang1)
-            setGoogleLang(lang.lang1)
-            //const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
-            //contentLanguageTitle.innerHTML = lang.lang2
-        }*/
-    },[])
-
     const isDesktop = useMediaQuery({ query: '(min-width:769px)' })
     const isMobile = useMediaQuery({ query: '(max-width:768px)' })
 
@@ -60,44 +50,13 @@ function Start() {
 
     const modalOpen = () => {
         const modal = document.getElementsByClassName("modal")[0]
-        //const certLabel = document.getElementsByClassName("certLabel")[0]
-        //const cert = document.getElementsByClassName("cert")[0]
-
         modal.classList.add("is-active")
-        //certLabel.style.display = "none"
-        //cert.style.display = "none"
         setMessage('')
     }
 
     const onClickBackBtn = (e) => {
         navigate(-1)
     }
-
-    
-
-    /*const onClickContentLanguage = () => {
-        const contentsLanguage = document.getElementsByClassName("contentsLanguage")[0]
-        const isActive = document.getElementsByClassName("is-active")[0]
-        const languageOpen = document.getElementsByClassName("languageOpen")[0]
-        if(languageOpen){
-            contentsLanguage.classList.remove("is-active")
-            contentsLanguage.classList.remove("languageOpen")
-        }else if(!languageOpen){
-            contentsLanguage.classList.add("is-active")
-            contentsLanguage.classList.add("languageOpen")
-        }
-
-    }*/
-
-    /*const onClickChangeLanguage = (e) =>{
-        const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
-        contentLanguageTitle.innerHTML = e.target.innerHTML
-
-        localStorage.removeItem('language')
-        //localStorage.setItem('language',e.target.id.split(' ')[0])
-        localStorage.setItem('language',JSON.stringify({"lang1": e.target.id.split(' ')[0],"lang2": e.target.id.split(' ')[1]}))
-        setGoogleLang(e.target.id.split(' ')[0])
-    }*/
 
 
 
@@ -122,10 +81,6 @@ function Start() {
         setUserLang2(e.target.id.split(' ')[2])
         setUserLangCode(e.target.id.split(' ')[0])
 
-        //localStorage.removeItem('language')
-        //localStorage.setItem('language',e.target.id.split(' ')[0])
-        //localStorage.setItem('language',JSON.stringify({"lang1": e.target.id.split(' ')[0],"lang2": e.target.id.split(' ')[1],"lang3":e.target.id.split(' ')[2]}))
-        //setGoogleLang(e.target.id.split(' ')[0])
     }
 
     const onClickAuthNumber = async (e) => {
@@ -161,13 +116,6 @@ function Start() {
             setMessage('Incorrect email format')
         }
 
-        /*if(num){
-            console.log("번호같음")
-            
-        }
-        else{
-            console.log("번호다름")
-        }*/
     }
 
     const onClickLogin = async () => {
@@ -428,10 +376,6 @@ function Start() {
                                 <label className="label" style={{textAlign:"left"}}><Translate>Sign up password</Translate></label>
                                 <input className="password input is-info registerPassword" type="password" style={{marginBottom:"2vw"}}></input>
 
-                                {/*<label className="label certLabel" style={{textAlign:"left", display:"none"}}><Translate>auth number</Translate></label>
-                                <div className="cert" style={{display:"none"}}>
-                                    <input className="input is-danger certNum" type="text" style={{marginBottom:"2vw",width:"40vw",float:"left"}}></input>
-                                </div>*/}
                                 {(message != '') &&
                                 <div className="notification is-warning" style={{marginBottom:"1vh",padding:"1vw"}}>
                                     <Translate>{message}</Translate>

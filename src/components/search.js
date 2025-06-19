@@ -94,29 +94,12 @@ function Search() {
         }
     };
 
-    /*const modalOpen = () => {
-        const modal = document.getElementsByClassName("modal")[0]
-        modal.classList.add("is-active")
-        
-    }
-
-    const modalClose = () => {
-        const modal = document.getElementsByClassName("modal")[0]
-        modal.classList.remove("is-active")
-    }*/
 
 
     const handleSearchMobile = async () => {
         console.log(searchRefMobie.current.value)
         setSearchResults([])
         // 검색 버튼을 클릭할 때마다 Tour API를 호출합니다.
-        /*const logo = document.getElementsByClassName("a-logo")[0]
-        const tip = document.getElementsByClassName("a-tip")[0]
-        const card = document.getElementsByClassName("card")[0]
-
-        logo.style.display = "none"
-        tip.style.display = "none" 
-        card.style.display = "block"*/
 
         if(googleLang !== 'ko'){
             try{
@@ -140,13 +123,6 @@ function Search() {
         console.log(searchRefDesktop.current.value)
         setSearchResults([])
         // 검색 버튼을 클릭할 때마다 Tour API를 호출합니다.
-        /*const logo = document.getElementsByClassName("a-logo")[0]
-        const tip = document.getElementsByClassName("a-tip")[0]
-        const card = document.getElementsByClassName("card")[0]
-
-        logo.style.display = "none"
-        tip.style.display = "none" 
-        card.style.display = "block"*/
 
         if(googleLang != 'ko'){
             try{
@@ -350,7 +326,6 @@ function Search() {
                     <button className="button is-outlined is-success" onClick={handleSearchDesktop}><Translate>search</Translate></button>
                 </div>
 
-                {/*<span class="tag is-success" style={{width:"50vw", fontSize:"1.5vw"}} onClick={modalOpen}>Recommended area</span>*/}
 
                 <div className="dropdown recommendContent recommendOpen">
                     <div className="dropdown-trigger">
@@ -526,16 +501,6 @@ function Search() {
                             window.location.href = `/introduce/${spot.contentid}`
                         }}>
                             <div>
-                                {/*<div className="card-image">
-                                
-                                    {spot.firstimage ? <figure className="image is-4by3">
-                                        <img src={spot.firstimage} alt="IMG"></img> 
-                                    </figure> : <figure className="image is-4by3">
-                                        <img src="/images/nothing.png" alt="IMG"></img> 
-                                    </figure>}
-                                    
-
-                                </div>*/}
 
                                 <div className="search-result">
                                 <Translator

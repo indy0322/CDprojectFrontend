@@ -228,10 +228,6 @@ function User(){
         setUserLang1(e.target.id.split(' ')[1])
         setUserLang2(e.target.id.split(' ')[2])
         setUserLangCode(e.target.id.split(' ')[0])
-
-        /*sessionStorage.removeItem('language')
-        sessionStorage.setItem('language',JSON.stringify({"lang1": e.target.id.split(' ')[0],"lang2": e.target.id.split(' ')[1], "lang3": e.target.id.split(' ')[2]}))
-        setGoogleLang(e.target.id.split(' ')[0])*/
     }
 
     const modalClose = () => {
@@ -429,11 +425,6 @@ function User(){
                         </div>
                     </div>
                 </nav>
-                {/*<div className="logoImageContainer" style={{alignItems:"center",justifyContent:"center",display:"flex",paddingTop:"10vh",marginBottom:"3vw"}}>
-                    <figure className="image" style={{height:"20vh"}}>
-                        <img style={{width:"15vw", height:"15vh"}} src="/images/logo.png"/>
-                    </figure>
-                </div>*/}
 
                 <div className='mainContainer'>
                     <div style={containerStyle}>
@@ -542,12 +533,6 @@ function User(){
                     to={googleLang}
                     googleApiKey={process.env.REACT_APP_GOOGLE}
                 >
-                {/*<div className="logoImageContainer" style={{alignItems:"center",justifyContent:"center",display:"flex",paddingTop:"10vh",marginBottom:"10vw"}}>
-                    <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
-                    <figure className="image" style={{height:"20vh"}}>
-                        <img style={{width:"60vw", height:"20vh"}} src="/images/logo.png"/>
-                    </figure>
-                </div>*/}
 
                 <div className='mainContainer' style={{margin:"1vw"}}>
                     <div style={containerStyle}>

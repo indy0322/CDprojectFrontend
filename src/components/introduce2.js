@@ -73,10 +73,6 @@ function Introduce() {
             setTourX(tourData.mapx)
             setTourY(tourData.mapy)
 
-            /*let wishData = localStorage.getItem('tourData' + '-' + tourData.contentid)
-            if(wishData){
-                setWishHeart(true)
-            }*/
         }
 
     },[])
@@ -104,7 +100,7 @@ function Introduce() {
     const [nickName, setNickName] = useState('')
 
     const onOpenClose = () => {
-        //setInnerState(!innerState)
+        
         const reviewContainer = document.getElementsByClassName("reviewContainer")[0]
         const stateClose = document.getElementsByClassName("close")[0]
         const stateOpen = document.getElementsByClassName("open")[0]
@@ -127,19 +123,6 @@ function Introduce() {
     }
 
     const onClickHeart = () => {
-        /*const heartBtn = document.getElementsByClassName("heartBtn")[0]
-        const heartFull = document.getElementsByClassName("heartFull")[0]
-        const heartEmpty = document.getElementsByClassName("heartEmpty")[0]
-        if(heartFull){
-            heartBtn.innerHTML = "🤍"
-            heartBtn.classList.remove("heartFull")
-            heartBtn.classList.add("heartEmpty")
-        }
-        else if(heartEmpty){
-            heartBtn.innerHTML = "❤️"
-            heartBtn.classList.remove("heartEmpty")
-            heartBtn.classList.add("heartFull")
-        }*/
         if(!wishHeart){
             const date = new Date()
             const newwishData = {
@@ -163,28 +146,6 @@ function Introduce() {
         setWishHeart(!wishHeart)
     }
 
-    /*useEffect(() => {
-        if(wishHeart){
-            const newwishData = {
-                nickName: nickName,
-                tourId: tourId,
-                tourAddress: tourAddress,
-                tourImage: tourimage,
-                tourX: tourX,
-                tourY: tourY,
-                tourTitle: tourTitle
-            }
-            Services.wishRegister(newwishData)
-        }
-        else{
-            const removeWishData = {
-                nickName: nickName,
-                tourId: tourId
-            }
-            Services.wishRemove(removeWishData)
-        }
-    },[wishHeart])*/
-
     useEffect(() => {
         if(nickName != ''){
             const getWishData = async () => {
@@ -192,15 +153,14 @@ function Introduce() {
                     nickName: nickName
                 }
                 let aaa = await Services.wishInfo(searchData)
-                //console.log(aaa)
+                
                 aaa.map((w) => {
                     if(w.tourId == tourId){
                         setWishHeart(true)
                     }
                 })
                 
-                /*
-                */
+                
             }
             getWishData()
         }
@@ -222,11 +182,11 @@ function Introduce() {
 
     const onClickTourExplainBtn = async () => {
         const tourExplainBtn = document.getElementsByClassName('tourExplainBtn')[0]
-        //const reviewRightBtn = document.getElementsByClassName('reviewRightBtn')[0]
+        
         const explainTextareaContainer = document.getElementsByClassName('explainTextareaContainer')[0]
 
         tourExplainBtn.style.display = "none"
-        //reviewRightBtn.style.marginTop = "2vw"
+       
         explainTextareaContainer.style.display = "block"
         
         const openai = new OpenAI({
@@ -252,12 +212,6 @@ function Introduce() {
 
         const explainTextarea = document.getElementsByClassName('explainTextarea')[0]
         explainTextarea.innerHTML = response.choices[0].message.content
-        /*await axios.get(`https://translation.googleapis.com/language/translate/v2?key=${process.env.REACT_APP_GOOGLE}&q=${response.choices[0].message.content}&target=${googleLang}&source=ko`)
-                    .then((res) => {
-                        console.log(res.data.data.translations[0].translatedText)
-                        const explainTextarea = document.getElementsByClassName('explainTextarea')[0]
-                        explainTextarea.innerHTML = res.data.data.translations[0].translatedText                            
-                    })*/
 
     }
     
@@ -335,7 +289,7 @@ function Introduce() {
         }else{
             console.log('내용이 없음')
         }
-        //Services.reviewRegister({nickname:nickName,tourId:tourId,langCode:googleLang,review:reviewContent})
+        
     }
 
     const onClickReviewRemove = (e) => {
@@ -379,8 +333,6 @@ function Introduce() {
             }
             
         },[reviewTrans])
-
-        //위의 useEffect는 문장의 소스 언어를 몰라도 번역이 가능하도록 하게 하기위해 작성해 놓은것 사용하려면 주석을 풀고 <text>{rrr}</text>를 아래에 Translator와 Translate 로 감싸진 review.review를 지우고 넣으면 된다.
 
         return (<div className="box" key={review.date} style={{margin:"1vw", fontWeight:"bold"}}>
             {(nickName == review.nickname) && <button className="delete deleteBtn" id={review.date} aria-label="close" style={{float:"right"}} onClick={onClickReviewRemove}></button>}

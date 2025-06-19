@@ -48,18 +48,10 @@ function Test() {
     useEffect(async () => {
         console.log(`${process.env.REACT_APP_GOOGLEKEY}`)
         const key = `${process.env.REACT_APP_TOUR}`
-
-        
-        /*await axios.post(`https://translation.googleapis.com/language/translate/v2?key=${googleKey}&target=ja&q=안녕하세요`)
-            .then((res) => {
-                console.log(res.data.data.translations[0].translatedText)
-            })*/
         Services.searchStay(setTourList,key)
 
 
         navigator.geolocation.getCurrentPosition(async(position) => {
-            //setLat(position.coords.latitude)
-            //setLng(position.coords.longitude)
             console.log(position.coords.latitude, position.coords.longitude)
 
             await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/latlng`,{lng: position.coords.longitude, lat: position.coords.latitude})
@@ -158,10 +150,7 @@ function Test() {
         }
     }
 
-    //const [innerState, setInnerState] = useState(false)
-
     const onOpenClose = () => {
-        //setInnerState(!innerState)
         const container = document.getElementsByClassName("container")[0]
         const stateClose = document.getElementsByClassName("close")[0]
         const stateOpen = document.getElementsByClassName("open")[0]

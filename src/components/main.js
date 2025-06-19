@@ -17,7 +17,6 @@ function Main(){
                     "Content-Type": "application/json",
                     "Authorization": userToken.token
                 },
-                //method: "GET",
             }
 
             var userData = await Services.auth(option)
@@ -132,7 +131,6 @@ function Main(){
         <div>
             {isDesktop && <div>
                 <Translator
-                    //cacheProvider={cacheProvider}
                     from='en'
                     to={googleLang}
                     googleApiKey={process.env.REACT_APP_GOOGLE}
@@ -253,7 +251,6 @@ function Main(){
 
             {isMobile && <div>
                 <Translator
-                    //cacheProvider={cacheProvider}
                     from='en'
                     to={googleLang}
                     googleApiKey={process.env.REACT_APP_GOOGLE}
