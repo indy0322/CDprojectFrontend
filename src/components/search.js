@@ -80,14 +80,13 @@ function Search() {
 
     const fetchTourAPI = async (place) => {
         try {
-            await axios.get(`https://apis.data.go.kr/B551011/KorService1/searchKeyword1?MobileOS=ETC&MobileApp=APPTest&_type=json&numOfRows=15&serviceKey=${process.env.REACT_APP_TOUR}&keyword=${place} `)
-                .then(async (res) => {
-                    console.log(res.data.response.body.items.item)
-                    setSearchResults(res.data.response.body.items.item)
-                    sessionStorage.removeItem('searchResult')
-                    var result = res.data.response.body.items.item
-                    sessionStorage.setItem('searchResult',JSON.stringify(result))
-                })
+                const res = await Services.fetchTourAPI(place);
+
+                console.log(res.data.response.body.items.item)
+                setSearchResults(res.data.response.body.items.item)
+                sessionStorage.removeItem('searchResult')
+                var result = res.data.response.body.items.item
+                sessionStorage.setItem('searchResult',JSON.stringify(result))
             }     // Tour API 응답에서 결과를 추출하여 설정
         catch (error) {
             console.error('Error fetching tour data:', error);

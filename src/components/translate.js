@@ -289,22 +289,27 @@ function TranslatePage() {
   };
 
   const speechtotext = async (file) => {
-    
-    const formData = new FormData()
-    formData.append("model","whisper-1")
-    formData.append("file",file)
+    const res = await Services.speechToText(file)
 
-    await axios.post('https://api.openai.com/v1/audio/transcriptions',formData,{
-        headers: {
-            "Content-Type":"multipart/form-data",
-            Authorization:`Bearer ${process.env.REACT_APP_CHAT}` //open api key를 사용할 때, .env 파일에 저장해서 키를 사용하면 작동이 안되는 문제점이 있다.(만약 .env에 api 키를 환경변수로 할당해서 사용하려할 때: 리액트에서 .env에 환경변수를 추가해서 사용하려면 REACT_APP_으로 변수명이 시작되어야한다.) 그래서 키 값을 이와 같이 하드 코딩한 후, netlify에 배포해서 사용하고 있다.
-        }
-    })
-    .then((res) => {
-        console.log(res.data.text)
-        setInputText(res.data.text)
-        translate2(res.data.text)
-    })
+    console.log(res.data.text)
+    setInputText(res.data.text)
+    translate2(res.data.text)
+    
+    // const formData = new FormData()
+    // formData.append("model","whisper-1")
+    // formData.append("file",file)
+
+    // await axios.post('https://api.openai.com/v1/audio/transcriptions',formData,{
+    //     headers: {
+    //         "Content-Type":"multipart/form-data",
+    //         Authorization:`Bearer ${process.env.REACT_APP_CHAT}` //open api key를 사용할 때, .env 파일에 저장해서 키를 사용하면 작동이 안되는 문제점이 있다.(만약 .env에 api 키를 환경변수로 할당해서 사용하려할 때: 리액트에서 .env에 환경변수를 추가해서 사용하려면 REACT_APP_으로 변수명이 시작되어야한다.) 그래서 키 값을 이와 같이 하드 코딩한 후, netlify에 배포해서 사용하고 있다.
+    //     }
+    // })
+    // .then((res) => {
+    //     console.log(res.data.text)
+    //     setInputText(res.data.text)
+    //     translate2(res.data.text)
+    // })
   
   }
 

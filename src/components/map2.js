@@ -60,7 +60,7 @@ function Map2(){
             setLng(position.coords.longitude)
             console.log(position.coords.latitude, position.coords.longitude)
 
-            await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/latlng`,{lng: position.coords.longitude, lat: position.coords.latitude})
+            await axios.post(`http://localhost:8000/api/latlng`,{lng: position.coords.longitude, lat: position.coords.latitude})
                 .then(async(res) =>{
                     console.log('tmplang: ', tmplang)
                     console.log(res.data[0].text)
@@ -187,7 +187,7 @@ function Map2(){
             setLng(position.coords.longitude)
             console.log(position.coords.latitude, position.coords.longitude)
 
-            await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/latlng`,{lng: position.coords.longitude, lat: position.coords.latitude})
+            await axios.post(`http://localhost:8000/api/latlng`,{lng: position.coords.longitude, lat: position.coords.latitude})
                 .then(async(res) =>{
                     console.log(res.data[0].text)
                     setCurrentPoint(res.data[0].text)

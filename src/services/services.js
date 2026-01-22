@@ -150,6 +150,29 @@ class Services{
                 return audioObjectUrl
             })
     }
+
+    async speechToText(file){
+        const formData = new FormData()
+        formData.append('file', file)
+
+        return await axios.post(
+            'https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/speech/stt',
+            formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        )
+    }
+
+    async fetchTourAPI(place){
+        return await axios.get(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/tour/search`,
+            {
+                params: { keyword: place }
+            }
+        )
+    }
 }
 
 export default new Services()
