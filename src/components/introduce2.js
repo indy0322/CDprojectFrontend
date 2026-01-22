@@ -188,30 +188,12 @@ function Introduce() {
         tourExplainBtn.style.display = "none"
        
         explainTextareaContainer.style.display = "block"
-        
-        const openai = new OpenAI({
-            apiKey: process.env.REACT_APP_CHAT,
-            dangerouslyAllowBrowser: true
-        })
 
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
-            messages: [
-                {
-                "role": "user",
-                "content": `${tourTitle}을 ${chatgptLang} 설명해`
-                }
-            ],
-            temperature: 1,
-            //max_tokens: 230,
-            top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
-        })
-        console.log(response.choices[0].message.content) 
+        const response = await Services.tourExplain(tourTitle, chatgptLang)
+        console.log(response.data.text) 
 
         const explainTextarea = document.getElementsByClassName('explainTextarea')[0]
-        explainTextarea.innerHTML = response.choices[0].message.content
+        explainTextarea.innerHTML = response.data.text
 
     }
     

@@ -173,6 +173,15 @@ class Services{
             }
         )
     }
+
+    async tourExplain(tourTitle, chatgptLang){
+        return await axios.post(`http://localhost:8000/api/tour/explain`,
+          {
+            tourTitle: tourTitle,
+            lang: chatgptLang
+          }
+        )
+    }
 }
 
 export default new Services()
