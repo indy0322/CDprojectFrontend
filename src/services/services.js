@@ -175,7 +175,7 @@ class Services{
     }
 
     async tourExplain(tourTitle, chatgptLang){
-        return await axios.post(`http://localhost:8000/api/tour/explain`,
+        return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/tour/explain`,
           {
             tourTitle: tourTitle,
             lang: chatgptLang
